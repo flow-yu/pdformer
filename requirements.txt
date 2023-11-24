@@ -1,0 +1,13 @@
+ipython
+json
+numpy
+paddleocr==2.6
+paddlepaddle==2.4.2
+pdfplumber
+pdfminer
+pdf2image
+pix2text
+poppler-utils
+PyPDF2
+sklearn
+transformers

@@ -3,25 +3,19 @@ import json
 import sys
 import argparse
 
-# 获取当前脚本所在路径
 current_dir = os.path.dirname(os.path.abspath(__file__))
-# 获取父文件夹路径
 parent_dir = os.path.dirname(current_dir)
-# 将父文件夹路径添加到系统的搜索路径中
 sys.path.append(parent_dir)
 
 from src.pdformer import Pdformer
-from src.utile import *
+# from src.utile import *
 
 def main():
-    # 创建 OptionParser 对象
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', default='Input/example/test.pdf', help='input file')
     parser.add_argument('--section', default=None, help='Specify the section')
     parser.add_argument('--mode', default='normal', help='output mode')
     parser.add_argument('--anspath', default='ans/', help='the answer being asked')
-
-        # 解析命令行参数
     args = parser.parse_args()
 
     # 读取参数文件 setup.txt
@@ -31,9 +25,10 @@ def main():
     #         if line.strip():  # 忽略空行
     #             key, value = line.strip().split('=')
     #             setup_params[key.strip()] = value.strip()\
-    with open('Input/conf.json', 'r') as file:
+    with open('input/conf.json', 'r') as file:
         config = json.load(file)
 
+    # TODO：logically wrong？
     if args.f:
         args.file = config['f']
     if args.section:
@@ -56,7 +51,7 @@ def main():
     alayout3 = json.loads(json_data)
 
     if section != None:
-        alayout3 = find_content (alayout3, section)
+        alayout3 = find_content(alayout3, section)
 
     json_data = json.dumps(alayout3, indent=2)
     os.makedirs(anspath, exist_ok=True)
