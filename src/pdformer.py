@@ -68,6 +68,9 @@ class Pdformer():
 
     def generate_structured_pics(self):
         print("############################")
+        if os.path.exists(self.structurePath):
+            print("Structure already generated")
+            return
         command = ["python", "structurer/infer.py",
                 "--model_dir=" + LCNET_PATH,
                 "--image_dir=" + self.pics_folder,
@@ -235,25 +238,33 @@ class Pdformer():
 
         pages = os.listdir(self.pics_folder)
         print(pages)
+        page2box2text = [{(box[2]*200/72, 2200-box[5]*200/72, box[4]*200/72, 2200-box[3]*200/72):box[1] for box in self.text_boxes_from_miner[i]} for i in range(len(pages))]
         for i, box in tqdm(enumerate(pages)): ##某一页
-            box2text = {(box[2]*200/72, 2200-box[5]*200/72, box[4]*200/72, 2200-box[3]*200/72):box[1] for box in self.text_boxes_from_miner[i]}
+            ###############
             # img_fp = os.path.join(self.pics_folder, pages[i])
             # image = Image.open(img_fp)
             # draw = ImageDraw.Draw(image)
             # for bbox in box2text:
-            #     draw.rectangle([bbox[0]*200/72, 2200-bbox[3]*200/72, bbox[2]*200/72, 2200-bbox[1]*200/72], outline="red", width=2)
-            for fsection in self.final_layout2[str(i)]:
-                for ffbox in fsection[1]:
+            #     draw.rectangle([bbox[0], bbox[1], bbox[2], bbox[3]], outline="red", width=2)
+            ###############
+            for idx_fsection, fsection in enumerate(self.final_layout2[str(i)]):
+                for idx_ffbox, ffbox in enumerate(fsection[1]):
                     left, top, right, bottom = ffbox[:4]
+                    ###############
                     # draw.rectangle([left, top, right, bottom], outline="blue", width=2)
+                    # draw.text((left, top), str(idx_fsection) + ", "+ str(idx_ffbox), fill="black")
+                    ###############
                     ybox = (left, top, right, bottom)
                     only_text = ""
+                    box2text = page2box2text[ffbox[5]]
                     for box in box2text:
                         if self.check_overlap(ybox, box):
                             only_text += box2text[box]
                             only_text += "\n"
                     ffbox.append(only_text)
+            ###############
             # image.save(f"output/pics_miner/boxed_image_{i}.png")
+            ###############
 
         json_data = json.dumps(self.final_layout2, indent=2)
         # 将JSON数据写入文本文件

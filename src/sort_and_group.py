@@ -210,6 +210,8 @@ class SortGrouper():
                     section_list=[]
                     section_list.append(item)
                     filtered_boxes = self.possible_boxes(box_choosefrom, item)
+                    for bbox in filtered_boxes:
+                        bbox.append(i)
                     section_list.append(filtered_boxes)
 
                     box_choosefrom = remove_elements(box_choosefrom, filtered_boxes) ##更新候选
@@ -249,7 +251,9 @@ class SortGrouper():
                 #字典的键为当前页面的索引"i"，值为标题信息列表。
                 image = Image.open(img_fp)
                 pic_width = image.size[0]
-                add_boxs = self.sort_and_group_boxes3(self.left_boxes[str(i+1)],pic_width)
+                add_boxs = self.sort_and_group_boxes3(self.left_boxes[str(i+1)], pic_width)
+                for bbox in add_boxs:
+                    bbox.append(i+1)
                 for a_box in add_boxs:
                     final_layout2[str(i)][-1][1].append(a_box)
 

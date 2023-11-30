@@ -64,7 +64,7 @@ class JsonSolver():
                 new_value = {}
                 for index, item in enumerate(value):
                     position = tuple(item[:4])
-                    content = item[4]
+                    content = item[5]
                     new_item = {"position": position, "content": content}
                     new_value[str(index)] = new_item
                 new_dict[key] = new_value
