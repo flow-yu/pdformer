@@ -1,4 +1,6 @@
 protobuf-3.19.0/
-Input/data
+input/data
+output
 mypdformer/
 pretrained_model/
+resources/pretrained_model/

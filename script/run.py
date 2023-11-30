@@ -8,11 +8,11 @@ parent_dir = os.path.dirname(current_dir)
 sys.path.append(parent_dir)
 
 from src.pdformer import Pdformer
-# from src.utile import *
+from src.utile import *
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-f', default='Input/example/test.pdf', help='input file')
+    parser.add_argument('-f', default='input/example/test.pdf', help='input file')
     parser.add_argument('--section', default=None, help='Specify the section')
     parser.add_argument('--mode', default='normal', help='output mode')
     parser.add_argument('--anspath', default='ans/', help='the answer being asked')
@@ -25,19 +25,15 @@ def main():
     #         if line.strip():  # 忽略空行
     #             key, value = line.strip().split('=')
     #             setup_params[key.strip()] = value.strip()\
-    with open('input/conf.json', 'r') as file:
+    with open('input/config/conf.json', 'r') as file:
         config = json.load(file)
 
-    # TODO：logically wrong？
     if args.f:
         args.file = config['f']
     if args.section:
         args.section = config['section']
     if args.mode:
         args.mode = config['mode']
-    # # 解析参数
-    # (options, args) = parser.parse_args(params + sys.argv[1:])
-    # 获取解析后的参数值
     filepath = config['f']
     section = config['section']
     mode =  config['mode']

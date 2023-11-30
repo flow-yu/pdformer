@@ -1,0 +1,169 @@
+{
+  "ABSTRACT": {
+    "content": {}
+  },
+  "1 INTRODUCTION": {
+    "content": {
+      "figure": [
+        [
+          913.4409930000423,
+          1607.2171762222893,
+          1488.8207842845768,
+          1920.9571876240616,
+          ""
+        ],
+        [
+          176.81844507678088,
+          235.08187737816937,
+          760.6987508337053,
+          598.5106518712446,
+          "form of text, which weakens the capability of machines to describe\nand understand the real world. Therefore, it is necessary to ground\nsymbols to corresponding images, sound and video data and map\nsymbols to their corresponding referents with meanings in the\nphysical world, enabling machines to generate similar experiences\nlike a real human [18]. To realize this through graphs, we propose\nneural-symbolic graph databases (NSGDs).\nBelow we present examples of subgraph search over multi-modal\nknowledge graphs to illustrate the use-cases of NSGDs.\nExample 1.1. Subgraph search on multi-modal graphs. IMG-\npedia [11], Richpedia [31] and YAGO15K [23] are real multi-modal\nknowledge graphs G in which a node may contain images and\ntexts. Fig. 1 shows a part of these graphs illustrating information\nfor movies (mo), such as the actors (ac) and director (di) of a movie.\nThe movie node mo1 in G has three pairs of attributes/values: (name,\nTitantic), (director, James Cameron) and (storyline, a long paragraph\nof texts). An edge (mo1, ac2) from mo1 to an actor node ac2 indi-\ncates a relation \u201chasActor\". The node ac2 also contains three pairs\nof attributes/values, one of which is the actor\u2019s photo. On the other\nhand, the knowledge graph is usually incomplete e.g., the red dotted\narrow (mo1, ac3) does not appear in G.\nIn applications of online recommendation, question answering\nand information retrieval, a graph pattern could be issued over a\nknowledge graph. For example, a graph pattern P1 in Fig.2 describes\na movie as follows: a leading actor of the movie is Winslet; P1\ncontains an unknown actor cooperating with Winslet in this movie\nbut P1 has his photo associated with him; and the answer to P1\nshould return the name of the movie. Graph pattern P2 in Fig.2\ndescribes a football club as follows: P2 has two photos of the club\npresident (pr ) and the team coach (co) but not their names; P2 also\nincludes a star player (pl) of this club with name Ronaldo; and P2\nshould return the possible names of the club. Graph pattern P3 in\nFig. 2 is issued over multi-modal social networks, e.g., Twitter. \u25a1\n"
+        ]
+      ]
+    }
+  },
+  "2 PROBLEM DEFINITION": {
+    "content": {
+      "figure": [
+        [
+          217.20814949597704,
+          1017.6845170949543,
+          737.3574968143377,
+          1138.7609676491925,
+          ""
+        ]
+      ]
+    }
+  },
+  "3 FRAMEWORK OF SEARCH": {
+    "content": {}
+  },
+  "4 TOP-K STAR MATCHING": {
+    "content": {
+      "figure": [
+        [
+          159.85213426879423,
+          1133.4329267313203,
+          837.128739757633,
+          1584.8497605070543,
+          ""
+        ]
+      ]
+    },
+    "4.2 Top-h Node Matching": {
+      "content": {
+        "figure": [
+          [
+            207.99833975576644,
+            231.17256047807453,
+            754.3740982567269,
+            533.8428528951748,
+            "4.2 Top-h Node Matching\nAs shown in the framework of SMat, NMat identifies the top-\nh node matches by calculating the similarity function \u03b4 (Cq, C\u0434).\nUsually G is very large with billions of nodes (vectors), and hence\nit is time-consuming to obtain the exact order of the node matches.\nTo conquer the problem, NMat leverages Approximate Nearest\nNeighbors Search (ANNS) [32] to find the top-h node matches. In\nthis subsection, we first introduce the existing ANNS, and then\nimprove ANNS based on the features of content vectors in the\nNSGD.\n(1) Approximate nearest neighbors search.\nWe first give the definitions for Nearest Neighbors Search (NNS)\nand ANNS.\nNearest Neighbors Search (NNS). Given a query vector q and a\nfinite set of vectors S in the Euclidean space Ed with dimension\nd, NNS obtains q\u2019s h-nearest neighbors (vectors) R by evaluating\n\u03b4 (x, q), where x \u2208 R is described as follows:\nR = ar\u0434 min\nR \u2282S , | R=h |\n\u03b4 (x, q)\n(cid:213)\nx \u2208R\n(1)\nApproximate Nearest Neighbors Search (ANNS). Given a query\nvector q and a finite set of vectors S in the Euclidean space Ed with\ndimension d, ANNS builds an index I on S. It then gets a subset C\nof S by I, and evaluates \u03b4 (x, q) to obtain the approximate h-nearest\nneighbors (cid:101)R of the query vector q, where x \u2208 C.\n"
+          ]
+        ]
+      }
+    },
+    "4.3 Edge Judging": {
+      "content": {
+        "figure": [
+          [
+            219.14581617453197,
+            887.8050119934973,
+            764.6120128219785,
+            1192.7376048345088,
+            ""
+          ]
+        ]
+      }
+    }
+  },
+  "5 TOP-K JOIN & PATTERN DECOMPOSITION": {
+    "content": {},
+    "5.1 Top-k Join": {
+      "content": {
+        "figure": [
+          [
+            944.1605390510709,
+            1214.268137029763,
+            1481.4721013305618,
+            1618.8278020969688,
+            ""
+          ]
+        ]
+      }
+    },
+    "5.2 Pattern Decomposition": {
+      "content": {}
+    }
+  },
+  "6 EVALUATION": {
+    "content": {},
+    "6.1 Setup": {
+      "content": {}
+    },
+    "6.2 Experimental Results": {
+      "content": {
+        "figure": [
+          [
+            181.256820217315,
+            524.2969509274676,
+            775.1450795473975,
+            750.2356954146715,
+            "Ye Yuan, Delong Ma, Anbiao Wu, and Jianbin Qin\nFigure 11: Recall rates w.r.t. different pattern sizes.\n"
+          ],
+          [
+            175.05770756969375,
+            1396.3277324340422,
+            781.1336221622773,
+            1615.24326851239,
+            ""
+          ],
+          [
+            910.8465722339567,
+            230.722920217427,
+            1514.346710393209,
+            454.6337411810833,
+            ""
+          ],
+          [
+            910.3605396510387,
+            841.0300881555651,
+            1510.013886921402,
+            1063.4125812228745,
+            ""
+          ],
+          [
+            909.8427647716239,
+            1542.8316953530402,
+            1511.5378584682621,
+            1766.362511445209,
+            ""
+          ],
+          [
+            174.71022755112142,
+            492.1793638414334,
+            776.7795518307184,
+            685.8732515015229,
+            "Figure 11: Recall rates w.r.t. different pattern sizes.\nRecall rates. Fig. 11 plots the recall rate curves of the four algo-\nrithms on Richpedia and YAGO15K. As shown in the figure, (1) as\nthe pattern becomes larger, the recall rates of the four algorithms\ndecline slowly; and (2) NSMatch has the highest recalls (above 92%\non average), and NSnop has the lowest recalls (below 80% on aver-\nage). This is because NSMatch includes the edge judging model to\ncomplete missed edges during the star matching, while other three\nalgorithms neglect this. NSnop also applies the approximate NN\nsearch and thus obtains the lowest recall.\nExp-3: varying top-k. Varying k from 1 to 150, we report the\nresults of recall rates and running time of different algorithms.\n"
+          ],
+          [
+            177.893864695928,
+            955.3597737741537,
+            780.6635460563616,
+            1152.476978287787,
+            ""
+          ]
+        ]
+      }
+    }
+  },
+  "7 RELATED WORK": {
+    "content": {}
+  },
+  "8 CONCLUSION": {
+    "content": {}
+  },
+  "ACKNOWLEDGMENTS": {
+    "content": {}
+  }
+}

@@ -1,118 +1,28 @@
+ABSTRACT
+10 pages. https://doi.org/10.1145/3539618.3591773
 1 INTRODUCTION
-2017. Date of publication 9 June 2017; date of current version 11 Oct. 2017.
-1045-9219 (cid:1) 2017 IEEE. Personal use is permitted, but republication/redistribution requires IEEE permission.
-2 PARALLEL AGENT-BASED SIMULATION OF ROAD
-2.1 Simulation Space and Agents
-2.1.1 Simulation Space
-2.1.2 Agents
-2.1.3 Agent State Variables
-2.2 Parallelization and Data Dependencies
-1: Deﬁnitions:
-2: Tend simulation ending time
-3: Ct
-4: lt
-5: initialize t   0, C0
-6: while t < Tend do
-11: wait for all message sending and receiving to ﬁnish;
-18: end
-3 ADAPTIVE COMPUTATION REPLICATION
-2.3 Mutual Appointment Synchronization Protocol
-3.1.3 Requirements for Agent Models
-3.2 Sizes of Extended Layers
-3.2.1 Representation of Extended Layers
-3.2.2 Sizes of Link Segments
-3.1 Extended Layers on the Network
-3.1.1 One Extended Layer
-1;2. B1
-1;2 is the
-1;2 are send to LP1 by LP2. The agents in X1
-1;2 will function as proxy
-3.1.2 Multiple Layers
-2;1, X1
-2;1, G2, X1
-2;3, and X2
-2;3 (i.e., the dark gray
-2;1 function as buffer regions. The sec-
-2;1 (marked with a cross) is dropped since agent
-2;1 may
-2;1, G2, and X1
-2;3 are
-2;1 function as buffer
-2;1 is dropped. Agents in G2 will be
-2;3 and the ﬁrst part of X1
-3.2.3 Segments on Connecting Links
-2;3, exclud-
-2;3, excluding the crossed region, function as buffer regions.
-2;1 and X2
-3.2.4 Searching Algorithm for Determining Extended
-1: Deﬁnitions:
-2: k
-3: Ij;i
-4: Oj;i
-5: Sadd
-6: Scont
-7: Scheck all segments that are already inside extended layers
-8: Ll
-9: Vl
-10: z
-11: initialize k   1, z   true;
-12: foreach link l 2 Ij;i do
-2 ;
-14: end
-15: foreach link l 2 Oj;i do
-17: end
-2 (cid:3) gb (cid:3) Vl(cid:6)dÞ into Sadd, Scont and Scheck;
-2 þ gf Þ into Sadd, Scont and Scheck;
-2 ;
-18: while z do
-35: end
-3.3 Adaptive Extended Layers
-3.3.1 Analysis of Overhead
-3.3.2 Dynamic Determination of the Optimum Number
-3.4 Overall Execution of the Simulation
-4 EXPERIMENTS AND RESULTS
-4.1 Set-Up
-4.1.2 Workload
-80,000 links and 40,000 nodes in our representation.
-8 LPs
-16 LPs
-32 LPs
-48 LPs
-8 LPs
-16 LPs
-32 LPs
-48 LPs
-4.56(cid:10) 0.05
-4.59(cid:10) 0.13
-4.2.2 Overall Speed-Up
-4.2 Results
-8 LPs
-16 LPs
-32 LPs
-48 LPs
-8 LPs
-16 LPs
-32 LPs
-48 LPs
-0.77(cid:10) 0.03
-1.16 (cid:10) 0.04
-4.2.3 Redundant Computation and Overhead of
-31 (cid:10) 1, and 28(cid:10)1 times for 8, 16, 32, and 48 LPs respectively.
-19 hours simulation time). Both algorithms are executed by
-8 LPs
-16 LPs
-32 LPs
-48 LPs
-0.8(cid:10) 0.1
-1 min
-5 min
-10 min
-20.9(cid:10) 1.34
-2.98(cid:10) 0.29
-0.83(cid:10) 0.06
-4.2.4 Frequency of Evaluation
-4.2.5 Weak Scaling Property
-200 meters long. Agent populations are 5k, 10k, 20k, and
-40k respectively. Simulations with the four different net-
-6 CONCLUSION AND FUTURE WORK
-5 RELATED WORK
+2 PROBLEM DEFINITION
+3 FRAMEWORK OF SEARCH
+4 TOP-K STAR MATCHING
+4.1 Framework of SMat
+10. sort the leaf matches in V h
+11. while (|R | < k) do
+15. return R as sq(G, k);
+2, pivot matches A1, A2 and A3 hold the descending lists for leaf
+4.2 Top-h Node Matching
+35]. Based on the observation, we draw that nodes in the index IG
+4.3 Edge Judging
+5 TOP-K JOIN & PATTERN DECOMPOSITION
+5.1 Top-k Join
+3, JoinK updates lower bound as LB = 2.4. For sq2, the upper
+5.2 Pattern Decomposition
+2-approximate star cover.
+6 EVALUATION
+6.1 Setup
+100 and 150, and top-50 is the default one. We report the average
+1024; the learning rate is set to be 10−5; and the training batch size
+6.2 Experimental Results
+1.0X , where X = (cid:112)(|V |/k) · k. Fig. 9(b) shows the running time
+7 RELATED WORK
+8 CONCLUSION
+ACKNOWLEDGMENTS

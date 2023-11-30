@@ -1,29 +1,18 @@
 import os
-from paddleocr import PaddleOCR, draw_ocr
-from PIL import Image, ImageDraw, ImageFont
-import pdfplumber
+from PIL import Image
 # import pytesseract
-import numpy as np
-import time
-import sys
-import argparse
 import subprocess
-import numpy as np
-import pandas as pd
 import json
-import PyPDF2
 import copy
-import pix2text
 from pix2text import Pix2Text, merge_line_texts
-import re
-import tensorflow as tf
-import matplotlib.pyplot as plt
-from transformers import TFBertModel, BertTokenizer
-from sklearn.model_selection import train_test_split
 from pdf2image import convert_from_path
 from pdfminer.high_level import extract_pages
-from pdfminer.layout import LTTextBoxHorizontal, LTTextLineHorizontal, LTFigure, LTImage
+from pdfminer.layout import LTTextBoxHorizontal, LTTextLineHorizontal
+from tqdm import tqdm
+from PIL import ImageDraw
 # from rich.progress import track
+
+LCNET_PATH = "resources/pretrained_model/picodet_lcnet_x1_0_fgd_layout_infer"
 
 from src.title_detecter import TitleDetecter
 from src.sort_and_group import SortGrouper
@@ -58,24 +47,29 @@ class Pdformer():
         self.alayout2 = None
         self.alayout3 = None
 
+        self.text_boxes_from_miner = None
+
 
     def generate_pics(self):
         self.pics_folder = os.path.join(self.output_dir, "pics")
         if not os.path.exists(self.pics_folder):
             os.makedirs(self.pics_folder)
-
-        images = convert_from_path(self.PDF_file)
-        for i, image in enumerate(images):
-            # 生成PNG文件的文件名
-            filename = f"page-{i+1:06d}.png"  # 使用6位数字，左侧自动填充0
-            # 保存PNG文件
-            image_path = os.path.join(self.pics_folder, filename)
-            image.save(image_path, "PNG")
-            # image.save(pics_folder, "PNG")
+            print(self.PDF_file)
+            images = convert_from_path(self.PDF_file)
+            for i, image in enumerate(images):
+                # 生成PNG文件的文件名
+                filename = f"page-{i+1:06d}.png"  # 使用6位数字，左侧自动填充0
+                # 保存PNG文件
+                image_path = os.path.join(self.pics_folder, filename)
+                image.save(image_path, "PNG")
+                # image.save(pics_folder, "PNG")
+        else:
+            print("Pictures already generated")
 
     def generate_structured_pics(self):
+        print("############################")
         command = ["python", "structurer/infer.py",
-                "--model_dir=" + "pretrained_model/picodet_lcnet_x1_0_fgd_layout_infer",
+                "--model_dir=" + LCNET_PATH,
                 "--image_dir=" + self.pics_folder,
                 "--output_dir=" +  self.structurePath,
                 "--save_results"]
@@ -111,6 +105,7 @@ class Pdformer():
 
     def generate_test_boxes(self):
         page_text_boxes, page_img_boxes = self.extract_box_from_pdf(self.PDF_file)
+        self.text_boxes_from_miner = page_text_boxes
         with open(os.path.join(self.output_dir, 'text_boxes.json'), 'w') as f:
             json.dump(page_text_boxes, f)
 
@@ -159,12 +154,15 @@ class Pdformer():
 
 #isolated公式引入 速度慢
     def isolated_formula(self):
+        print("####################")
+        print("isolated_formula start")
         new_bboxes=copy.deepcopy(self.bboxes)
         pages = os.listdir(self.pics_folder)
+        p2t = Pix2Text(analyzer_config=dict(model_name='mfd'), device='gpu')
         for i,page in enumerate(pages):
             img_fp = os.path.join(self.pics_folder, pages[i])
-            p2t = Pix2Text(analyzer_config=dict(model_name='mfd'))
-            outs = p2t(img_fp, resized_shape=600)
+            # outs = p2t(img_fp, resized_shape=600)
+            outs = ""
         #####out的格式：左上角起顺时针 y为到图片上方的距离
         #####铭记：除了text_boxes y都为到图片上方的距离！！！！！！！！！
 
@@ -184,19 +182,78 @@ class Pdformer():
 
     def Pix2Text_ocr(self):
         pages = os.listdir(self.pics_folder)
+        p2t = Pix2Text(analyzer_config=dict(model_name='mfd'), device='gpu')
         for i, box in enumerate(pages): ##某一页
             img_fp = os.path.join(self.pics_folder, pages[i])
             image = Image.open(img_fp)
-
             for fsection in self.final_layout2[str(i)]:
                 for ffbox in fsection[1]:
                     left, top, right, bottom = ffbox[:4]
                     ybox = (left, top, right, bottom)
                     cropped_img = image.crop(ybox)
-                    p2t = Pix2Text(analyzer_config=dict(model_name='mfd'))
-                    outs = p2t(cropped_img, resized_shape=600)
+                    try:
+                        outs = p2t(cropped_img, resized_shape=600)
+                    except Exception as e:
+                        print(f"Skipping box outside image bounds: {ffbox}")
+                        continue
                     only_text = merge_line_texts(outs, auto_line_break=True)
                     ffbox.append(only_text)
+
+        json_data = json.dumps(self.final_layout2, indent=2)
+        # 将JSON数据写入文本文件
+        with open('output/final_layout2.txt', "w") as file:
+            file.write(json_data)
+
+    def check_overlap(self, boxa, boxb, threshold = 0.8):
+        """
+        检查两个框之间的重叠部分是否超过指定的阈值
+        """
+        left_a, top_a, right_a, bottom_a = boxa
+        left_b, top_b, right_b, bottom_b = boxb
+        overlap_left = max(left_a, left_b)
+        overlap_top = max(top_a, top_b)
+        overlap_right = min(right_a, right_b)
+        overlap_bottom = min(bottom_a, bottom_b)
+        
+        overlap_width = max(0, overlap_right - overlap_left)
+        overlap_height = max(0, overlap_bottom - overlap_top)
+        
+        overlap_area = overlap_width * overlap_height
+        boxb_area = (right_b - left_b) * (bottom_b - top_b)
+        overlap_ratio = overlap_area / boxb_area
+
+        return overlap_ratio > threshold
+
+    def Layout2Text(self):
+        print("####################")
+        print("Layout2Text start")
+        if self.text_boxes_from_miner is None:
+            with open(os.path.join(self.output_dir, 'text_boxes.json'), 'r') as f:
+                temp_miner = json.load(f)
+            for key, value in temp_miner.items():
+                self.text_boxes_from_miner[int(key)] = value
+
+        pages = os.listdir(self.pics_folder)
+        print(pages)
+        for i, box in tqdm(enumerate(pages)): ##某一页
+            box2text = {(box[2]*200/72, 2200-box[5]*200/72, box[4]*200/72, 2200-box[3]*200/72):box[1] for box in self.text_boxes_from_miner[i]}
+            # img_fp = os.path.join(self.pics_folder, pages[i])
+            # image = Image.open(img_fp)
+            # draw = ImageDraw.Draw(image)
+            # for bbox in box2text:
+            #     draw.rectangle([bbox[0]*200/72, 2200-bbox[3]*200/72, bbox[2]*200/72, 2200-bbox[1]*200/72], outline="red", width=2)
+            for fsection in self.final_layout2[str(i)]:
+                for ffbox in fsection[1]:
+                    left, top, right, bottom = ffbox[:4]
+                    # draw.rectangle([left, top, right, bottom], outline="blue", width=2)
+                    ybox = (left, top, right, bottom)
+                    only_text = ""
+                    for box in box2text:
+                        if self.check_overlap(ybox, box):
+                            only_text += box2text[box]
+                            only_text += "\n"
+                    ffbox.append(only_text)
+            # image.save(f"output/pics_miner/boxed_image_{i}.png")
 
         json_data = json.dumps(self.final_layout2, indent=2)
         # 将JSON数据写入文本文件
@@ -264,7 +321,8 @@ class Pdformer():
         # self.possible_section()
         # self.sort_boxes2()
         
-        self.Pix2Text_ocr()
+        # self.Pix2Text_ocr()
+        self.Layout2Text()
         self.supplement_title()
         
         JsonSolver().get_json(self)

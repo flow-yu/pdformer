@@ -26,6 +26,9 @@ from pdfminer.layout import LTTextBoxHorizontal, LTTextLineHorizontal, LTFigure,
 # from rich.progress import track
 from src.utile import *
 
+BERT_TITLE_MODEL_PATH = "resources/pretrained_model/bert-title/model_4epoch.h5"
+PRE_TRAINED_MODEL_NAME = "resources/pretrained_model/bert-base-uncased"
+
 class TitleDetecter():
     def __init__(self, pdf_file, textbox_file, pics_folder, output_dir ):
         self.PDF_file = pdf_file
@@ -37,7 +40,6 @@ class TitleDetecter():
 
     def encoder(self, sentences):
         ids = []
-        PRE_TRAINED_MODEL_NAME = 'bert-base-uncased'
         tokenizer = BertTokenizer.from_pretrained(PRE_TRAINED_MODEL_NAME,do_lower_case = True)
         for sentence in sentences:
             # 文本编码+添加编码id
@@ -52,11 +54,11 @@ class TitleDetecter():
             ids.append(encoding['input_ids'])
         return ids
 
-    def bert_title(self, main_instance):
+    def bert_title(self, main_instance, filter_threhold = 0.958):
         with open(self.textbox_file, 'r') as f:
         #不同pdf被pdfminer解析出的box信息存放在对应的textbox
              text_boxes = json.load(f)
-        bert_encoder = TFBertModel.from_pretrained('bert-base-uncased') #可以将输入的文本转换为高维向量表示
+        bert_encoder = TFBertModel.from_pretrained(PRE_TRAINED_MODEL_NAME) #可以将输入的文本转换为高维向量表示
 #模型构建
         input_word_ids = tf.keras.Input(shape=(16,), dtype=tf.int32, name="input_word_ids") #input层
         embedding = bert_encoder([input_word_ids])  #[batch_size, sequence_length, hidden_size]
@@ -97,7 +99,7 @@ class TitleDetecter():
         filtered_list = self.encoder(filtered_list)
         filtered_list = tf.convert_to_tensor(filtered_list)
 
-        model.load_weights('pretrained_model/model_4epoch.h5')
+        model.load_weights(BERT_TITLE_MODEL_PATH)
         prediction = model.predict(filtered_list)
 
         merged_array = np.concatenate(( text_list.reshape(-1, 1), prediction), axis=1)
@@ -107,7 +109,7 @@ class TitleDetecter():
 
         ans_array = np.empty((0, 2))
         for i in range(len(merged_array)):
-            if float(merged_array[i][1]) > 0.958:
+            if float(merged_array[i][1]) > filter_threhold:
                 ans_array = np.vstack((ans_array, merged_array[i]))
         with open('output/ans_title_list.txt', 'w') as f:
             for item in ans_array:
@@ -117,7 +119,7 @@ class TitleDetecter():
         copied_dict2 = copy.deepcopy(new_text_boxes)
         for i,page in enumerate(pages):
             for box in copied_dict2[str(i)]:
-                if float(merged_array[box_index][1]) <= 0.958:
+                if float(merged_array[box_index][1]) <= filter_threhold:
                     new_text_boxes[str(i)].remove(box)
                 box_index = box_index+1
         print(box_index)

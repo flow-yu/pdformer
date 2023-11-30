@@ -1,13 +1,13 @@
 ipython
-json
-numpy
 paddleocr==2.6
 paddlepaddle==2.4.2
+protobuf==3.19.0
 pdfplumber
 pdfminer
 pdf2image
 pix2text
 poppler-utils
 PyPDF2
-sklearn
+scikit-learn
 transformers
+tensorflow==2.2.0
