@@ -27,7 +27,9 @@ from pdfminer.layout import LTTextBoxHorizontal, LTTextLineHorizontal, LTFigure,
 from src.utile import *
 
 class JsonSolver():
-    def __init__(self):
+    def __init__(self, output_dir, temp_dir):
+        self.output_dir = output_dir
+        self.temp_dir = temp_dir
         self.alayout2 = None
         self.alayout3 = None
 
@@ -46,15 +48,14 @@ class JsonSolver():
                 self.range_boxes(value, new_dict[key])
 
     def tranform_json(self,main_instance):
-        with open('output/alayout.txt', "r") as file:
-            json_data = file.read()
-        alayout = json.loads(json_data)
+        with open(os.path.join(self.temp_dir, 'alayout.json'), "r") as f:
+            alayout = json.loads(f.read())
         alayout2 = copy.deepcopy(alayout)
         self.range_boxes(alayout, alayout2)
 
         json_data = json.dumps(alayout2, indent=2)
-        with open('output/alayout2.txt', "w") as file:
-            file.write(json_data)
+        with open(os.path.join(self.temp_dir, 'alayout2.json'), "w") as f:
+            f.write(json_data)
         self.alayout2 = alayout2
         main_instance.alayout2 = alayout2
 
@@ -72,15 +73,13 @@ class JsonSolver():
                 self.split_string(value, new_dict[key])
 
     def split_json(self, main_instance):
-        with open('output/alayout2.txt', "r") as file:
-            json_data = file.read()
-            self.alayout2 = json.loads(json_data)
+        with open(os.path.join(self.temp_dir, 'alayout2.json'), "r") as f:
+            self.alayout2 = json.loads(f.read())
 
         alayout3 = copy.deepcopy(self.alayout2)
         self.split_string(self.alayout2,alayout3)
-        json_data = json.dumps(alayout3, indent=2)
-        with open('output/alayout3.txt', "w") as file:
-            file.write(json_data)
+        with open(os.path.join(self.temp_dir, 'alayout3.json'), "w") as f:
+            json.dump(alayout3, f, indent=2)
         self.alayout3 = alayout3
         main_instance.alayout3 = alayout3
 

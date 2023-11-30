@@ -30,7 +30,10 @@ class Pdformer():
 
         self.pics_folder = os.path.join(self.output_dir, "pics")
         self.structurePath = os.path.join(self.output_dir, "structure")
-        self.textbox_file = os.path.join(self.output_dir, "text_boxes.json")
+        self.temp_folder = os.path.join(self.output_dir, "temp")
+        self.textbox_file = os.path.join(self.temp_folder, "text_boxes.json")
+        if not os.path.exists(self.temp_folder):
+            os.makedirs(self.temp_folder)
 
         self.new_text_boxes = None
         self.bboxes = None
@@ -109,9 +112,8 @@ class Pdformer():
     def generate_test_boxes(self):
         page_text_boxes, page_img_boxes = self.extract_box_from_pdf(self.PDF_file)
         self.text_boxes_from_miner = page_text_boxes
-        with open(os.path.join(self.output_dir, 'text_boxes.json'), 'w') as f:
+        with open(os.path.join(self.temp_folder, 'text_boxes.json'), 'w') as f:
             json.dump(page_text_boxes, f)
-
 
 # classify the bboxes
     def apply_structure_box(self):
@@ -135,25 +137,17 @@ class Pdformer():
                     y.append(y_min)
                     y.append(x_max)
                     y.append(y_max)
-                    if (box["category_id"]==0):
-                        y.append("text")
-                    if (box["category_id"]==1):
-                        y.append("title")
-                    if (box["category_id"]==2):
-                        y.append("list")
-                    if (box["category_id"]==3):
-                        y.append("table")
-                    if (box["category_id"]==4):
-                        y.append("figure")
+
+                    category_id2name = {0:"text", 1:"title", 2:"list", 3:"table", 4:"figure"}
+                    if (box["category_id"] in category_id2name):
+                        y.append(category_id2name[box["category_id"]])
                     if (box["category_id"]!=1):
                         bboxes.setdefault(str(i), []).append(y)  #####不可忘记str化！！否则在txt中看不出来！！！！
 
-        json_data = json.dumps(bboxes, indent=2)
-        # 将JSON数据写入文本文件
-        with open('output/layout_bbox.txt', "w") as file:
-            file.write(json_data)    
-
         self.bboxes = bboxes
+        with open(os.path.join(self.temp_folder, 'layout_bbox.json'), "w") as f:
+            json.dump(bboxes, f, indent=2)
+
 
 #isolated公式引入 速度慢
     def isolated_formula(self):
@@ -176,10 +170,8 @@ class Pdformer():
                     new_box1.append('isolated formula')
                     new_bboxes[str(i)].append(new_box1)
 
-        json_data = json.dumps(new_bboxes, indent=2)
-        # 将JSON数据写入文本文件
-        with open('output/layout_bbox2.txt', "w") as file:
-            file.write(json_data)
+        with open(os.path.join(self.temp_folder, 'layout_bbox2.json'), "w") as f:
+            json.dump(new_bboxes, f, indent=2)
 
         self.new_bboxes = new_bboxes
 
@@ -202,10 +194,8 @@ class Pdformer():
                     only_text = merge_line_texts(outs, auto_line_break=True)
                     ffbox.append(only_text)
 
-        json_data = json.dumps(self.final_layout2, indent=2)
-        # 将JSON数据写入文本文件
-        with open('output/final_layout2.txt', "w") as file:
-            file.write(json_data)
+        with open(os.path.join(self.temp_folder, 'final_layout2.json'), "w") as file:
+            json.dump(self.final_layout2, file, indent=2)
 
     def check_overlap(self, boxa, boxb, threshold = 0.8):
         """
@@ -266,13 +256,11 @@ class Pdformer():
             # image.save(f"output/pics_miner/boxed_image_{i}.png")
             ###############
 
-        json_data = json.dumps(self.final_layout2, indent=2)
-        # 将JSON数据写入文本文件
-        with open('output/final_layout2.txt', "w") as file:
-            file.write(json_data)
+        with open(os.path.join(self.temp_folder, 'final_layout2.json'), "w") as file:
+            json.dump(self.final_layout2, file, indent=2)
 
     def supplement_title(self):
-        with open('output/final_layout2.txt', "r") as file:
+        with open(os.path.join(self.temp_folder, 'final_layout2.json'), "r") as file:
             json_data = file.read()
         self.final_layout2 = json.loads(json_data)
         alayout = {}
@@ -309,25 +297,23 @@ class Pdformer():
                         for pbox in titlef[1]:
                             parentl[ptitle].setdefault("content", []).append(pbox)
 
-        json_data = json.dumps(alayout, indent=2)
-        with open('output/alayout.txt', "w") as file:
-            file.write(json_data)
         self.alayout = alayout
-
+        with open(os.path.join(self.temp_folder, 'alayout.json'), "w") as file:
+            json.dump(alayout, file, indent=2)
 
     def pdf2json(self):
         self.generate_pics()
         self.generate_structured_pics()
         self.generate_test_boxes()
 
-        TitleDetecter(self.PDF_file, self.textbox_file, self.pics_folder, self.output_dir).detector(self)
+        TitleDetecter(self.PDF_file, self.textbox_file, self.pics_folder, self.output_dir, self.temp_folder).detector(self)
         # self.bert_title()
         # self.merge_title()
         
         self.apply_structure_box()
         self.isolated_formula()
 
-        SortGrouper(self.PDF_file, self.textbox_file, self.pics_folder,self.new_bboxes,self.layout, self.output_dir).sort_and_group(self)
+        SortGrouper(self.PDF_file, self.textbox_file, self.pics_folder,self.new_bboxes,self.layout, self.output_dir, self.temp_folder).sort_and_group(self)
         # self.sort_boxes()
         # self.possible_section()
         # self.sort_boxes2()
@@ -336,7 +322,7 @@ class Pdformer():
         self.Layout2Text()
         self.supplement_title()
         
-        JsonSolver().get_json(self)
+        JsonSolver(self.output_dir, self.temp_folder).get_json(self)
         # self.tranform_json()
         # self.split_json()
 

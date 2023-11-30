@@ -42,27 +42,23 @@ def main():
     pdf_object = Pdformer(filepath)
     pdf_object.pdf2json()
 
-    with open('output/alayout3.txt', "r") as file:
-            json_data = file.read()
-    alayout3 = json.loads(json_data)
+    with open('output/temp/alayout3.json', "r") as f:
+        alayout3 = json.loads(f.read())
 
     if section != None:
         alayout3 = find_content(alayout3, section)
 
-    json_data = json.dumps(alayout3, indent=2)
     os.makedirs(anspath, exist_ok=True)
-    ans_section = os.path.join(anspath,"ans_section.txt" )
-    with open(ans_section, "w") as file:
-        file.write(json_data)
+    with open(os.path.join(anspath,"ans_section.json"), "w") as f:
+        json.dump(alayout3, f, indent=2)
 
     part_list = ["text", "image","list","table","isolated formula"]
     if mode != 'normal':  #text
         remove_elements_from_list(part_list, mode)
         remove_keys_from_nested_dict(alayout3, part_list)
-    json_data = json.dumps(alayout3, indent=2)
-    ans = os.path.join(anspath,"ans.txt" )
-    with open(ans, "w") as file:
-        file.write(json_data)
+
+    with open(os.path.join(anspath,"ans.json"), "w") as file:
+        json.dump(alayout3, file, indent=2)
 
 if __name__ == '__main__':
     main()

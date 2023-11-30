@@ -27,11 +27,13 @@ from pdfminer.layout import LTTextBoxHorizontal, LTTextLineHorizontal, LTFigure,
 from src.utile import *
 
 class SortGrouper():
-    def __init__(self, pdf_file, textbox_file, pics_folder, new_bboxes, layout, output_dir ):
+    def __init__(self, pdf_file, textbox_file, pics_folder, new_bboxes, layout, output_dir, temp_folder):
         self.PDF_file = pdf_file
         self.textbox_file = textbox_file
         self.pics_folder = pics_folder
         self.new_bboxes = new_bboxes
+        self.output_dir = output_dir
+        self.temp_folder = temp_folder
         self.layout = layout
         self.new_layout = None
         self.final_layout = None
@@ -165,12 +167,10 @@ class SortGrouper():
         for i,page in enumerate(pages):
             new_layout[str(i)] = self.sort_and_group_boxes(self.layout[str(i)])
 
-        json_data = json.dumps(new_layout, indent=2)
-        # 将JSON数据写入文本文件
-        with open('output/layout_title2.txt', "w") as file:
-            file.write(json_data)
         self.new_layout= new_layout
         main_instance.new_layout = new_layout
+        with open(os.path.join(self.temp_folder,'layout_title2.json'), "w") as f:
+            json.dump(new_layout, f, indent=2)
 
     def possible_boxes(self, box_list, title_box, a=20):
         # 定义一个空列表，用于存储符合条件的矩形框
@@ -220,24 +220,19 @@ class SortGrouper():
             left_boxes.setdefault(str(i), [])
             left_boxes[str(i)] = box_choosefrom
 
-        json_data = json.dumps(final_layout, indent=2)
-        # 将JSON数据写入文本文件
-        with open('output/final_layout.txt', "w") as file:
-            file.write(json_data)
+        with open(os.path.join(self.temp_folder,'final_layout.json'), "w") as f:
+            json.dump(final_layout, f, indent=2)
         self.final_layout = final_layout
         main_instance.final_layout = final_layout
 
-        json_data = json.dumps(left_boxes, indent=2)
-        # 将JSON数据写入文本文件
-        with open('output/left_boxes.txt', "w") as file:
-            file.write(json_data)
+        with open(os.path.join(self.temp_folder,'left_boxes.json'), "w") as f:
+            json.dump(left_boxes, f, indent=2)
         self.left_boxes = left_boxes
         main_instance.left_boxes = left_boxes
 
     def sort_boxes2(self,main_instance):
-        with open('output/final_layout.txt', "r") as file:
-            json_data = file.read()
-        final_layout = json.loads(json_data)
+        with open(os.path.join(self.temp_folder,'final_layout.json'), "r") as f:
+            final_layout = json.loads(f.read())
 
         final_layout2 = {}
         final_layout2 = copy.deepcopy(final_layout)
@@ -257,13 +252,10 @@ class SortGrouper():
                 for a_box in add_boxs:
                     final_layout2[str(i)][-1][1].append(a_box)
 
-        json_data = json.dumps(final_layout2, indent=2)
-        # 将JSON数据写入文本文件
-        with open('output/final_layout2.txt', "w") as file:
-            file.write(json_data)
-        print (len(final_layout2["0"][0][1]))
         self.final_layout2 = final_layout2
         main_instance.final_layout2 = final_layout2
+        with open(os.path.join(self.temp_folder,'final_layout2.json'), "w") as f:
+            json.dump(final_layout2, f, indent=2)
 
     def sort_and_group (self, main_instance):
         self.sort_boxes(main_instance)

@@ -150,7 +150,7 @@
             628.3954511107904,
             645.492236927383
           ],
-          "content": ""
+          "content": "Figure 2: Graph patterns.\n"
         },
         "12": {
           "position": [
@@ -159,7 +159,7 @@
             826.5943077721496,
             964.2396181750412
           ],
-          "content": ""
+          "content": "The example shows that both pattern and data are a combination\nof graph structure and unstructured data (e.g., image and text). The\nexisting techniques fail to solve the novel problem. This example\nthus raises several questions: How should we define graph data\nmodels to support unstructured data and catch the incompleteness\nof graphs? If such a graph model exists, how to define the subgraph\nsearch over the model? Are the new problems for subgraph search\nharder than the traditional ones? Putting these together, above\nall, can we develop practical and efficient algorithms to process\nsubgraph search over such large graph data?\n"
         },
         "13": {
           "position": [
@@ -168,7 +168,7 @@
             826.5310791654181,
             1030.9701688596556
           ],
-          "content": ""
+          "content": "Contributions & organization. This paper makes an effort to\nanswer above questions, from foundation to practice.\n"
         },
         "14": {
           "position": [
@@ -177,7 +177,7 @@
             826.6782712661087,
             1377.6583985788106
           ],
-          "content": "CCS CONCEPTS\n\u2022 Information systems \u2192 Graph-based database models.\nKEYWORDS\nsubgraph search; neural-symbolic; embedding\n"
+          "content": "(1) NSGD. We propose a novel graph data model\u2013neural-symbolic\ngraph database, referred to as NSGD (Section 2). An NSGD extends\na property graph model G with content and structural embeddings\nin every node and edge of G. The content embeddings represent\nunstructured data (e.g., images, videos and texts in Fig. 1) that\ncan be effectively transformed to the feature embeddings by ma-\nchine learning models [22]. Many neural methods (e.g., TransE [3],\nConE [44] and BetaE [27] convert nodes and edges into structural\nembeddings that can be used to solve the incompleteness of graphs.\nWe also conduct symbolic enhancement on the neural methods to\nfurther increase their effectiveness.\n"
         },
         "15": {
           "position": [
@@ -186,7 +186,7 @@
             826.8872413847123,
             1812.975715012082
           ],
-          "content": "1 INTRODUCTION\nIt is increasingly common to find real-life data modeled as graphs,\nwhich represent entities as nodes and relationships between entities\nas edges. Indeed, graphs have found prevalent use in online rec-\nommendation [20], question answering [7], link prediction [4, 39],\ninformation retrieval [38, 41], among other things. However, the\nexisting graphs are represented with pure symbols denoted in the\n"
+          "content": "(2) NSMatch. We define neural-symbolic subgraph matching (NS-\nMatch) by performing top-k subgraph search using sophisticated\nranking functions in a large NSGD (Section 2). Given a graph pat-\ntern Q, NSMatch decomposes it to a set of star patterns, and as-\nsembles top answers from individual star (Section 3). NSMatch\ngenerates top answers of stars in a monotonic decreasing order\nof matching score. This nice property makes it possible to apply\nmonotonic ranked joins to produce the final top k answers for Q\nwithout losing completeness (Section 5). NSMatch needs to process\nthe KNN embedding search for which graph-based indices [13, 24]\nare most efficient. However, the embeddings from an NSGD may be\nskewed indexed into communities with different cohesiveness. We\nthus optimize the graph-based indices by balancing the embedding\ndistribution to accelerate the search (Section 4).\n"
         },
         "16": {
           "position": [
@@ -195,7 +195,7 @@
             827.6915502201382,
             1946.1798431223679
           ],
-          "content": ""
+          "content": "(3) Experiments. Using real-life multi-modal graphs, we empirically\nevaluate our algorithms (Section 6). We find the following. (a) NS-\nMatch has always above 90% search accuracy in different settings,\nwhile its competitors have below 80% search accuracy in the same\n"
         },
         "17": {
           "position": [
@@ -204,7 +204,7 @@
             1561.9625443434536,
             390.19857769612736
           ],
-          "content": "Delong Ma\nNortheastern University, China\nmadelong@stumail.neu.edu.cn\n"
+          "content": "scenarios. (b) NSMatch is feasible on large graphs. It takes only one\nsecond on a graph of 500M nodes and 3000M edges and is scalable\nto different graph sizes. (c) NSMatch can support efficient cross-\nmodal search, over knowledge graphs, that cannot be expressed\nwith conventional subgraph search.\n"
         }
       },
       "figure": [
@@ -213,6 +213,7 @@
           1607.2171762222893,
           1488.8207842845768,
           1920.9571876240616,
+          0,
           ""
         ],
         [
@@ -220,7 +221,8 @@
           235.08187737816937,
           760.6987508337053,
           598.5106518712446,
-          "Ye Yuan\nBeijing Institute of Technology\nyuan-ye@bit.edu.cn\nAnbiao Wu\nNortheastern University, China\nanbiaowu@stumail.neu.edu.cn\n"
+          1,
+          ""
         ]
       ]
     }
@@ -307,7 +309,7 @@
             835.4026243924909,
             361.46385641503764
           ],
-          "content": ""
+          "content": "Similarity function. Given two vectors x and y with the same\ndimension, their similarity functions \u03b4 (x, y) are commonly used\nsimilarity metrics, including Euclidean distance, inner product, co-\nsine similarity, and Hamming distance, depend on applications.\n"
         },
         "9": {
           "position": [
@@ -316,7 +318,7 @@
             838.5439171431133,
             581.5625017415732
           ],
-          "content": ""
+          "content": "Similarity function. Given two vectors x and y with the same\ndimension, their similarity functions \u03b4 (x, y) are commonly used\nsimilarity metrics, including Euclidean distance, inner product, co-\nsine similarity, and Hamming distance, depend on applications.\nNeural-symbolic subgraph matching (NSMatch). Given a graph\npattern Q=(Vq, Eq, Lq, Cq ) and an NSGD G=(V , E, L, F,T ), a sub-\ngraph match h(Q) of Q in G is a mapping h from Q to G such that\n(1) for each node u \u2208 Vq , Lq (u) = L(h(u)); and (2) for each edge\ne=(u,v) \u2208 Eq , Lq (e) = L(h(u), h(v)). The neural-symbolic subgraph\nmatching needs to compute a match score S(h(Q)) between Q and\nh(Q). Given a similarity function \u03b4 (\u00b7), S(h(Q)) is computed as\n"
         },
         "10": {
           "position": [
@@ -325,7 +327,7 @@
             786.5612135482063,
             733.3085261193357
           ],
-          "content": ""
+          "content": "where Cv and Ch(v) are the content vectors of nodes v and h(v),\nrespectively.\n"
         },
         "11": {
           "position": [
@@ -352,7 +354,7 @@
             738.2350177207156,
             1197.7740121551153
           ],
-          "content": ""
+          "content": "Figure 3: Top-3 subgraph matches of P1 in G.\n"
         },
         "14": {
           "position": [
@@ -361,7 +363,7 @@
             830.9128813420346,
             1417.9687077412395
           ],
-          "content": ""
+          "content": "Example 2.1. One may issue a pattern P1 in Fig.2 against the\nNSGD G in Fig.1 and want to find top-3 answers. We first compute\nall subgraph matches of P1 in G: mo1ac1ac2, mo1ac3ac2, mo3ac5ac6\nand mo2ac5ac4. The top-3 answers are mo1ac1ac2, mo1ac3ac2 and\nmo3ac5ac6 shown in Fig. 3, since their matching scores are larger\n\u25a1\nthan that of mo2ac5ac4 based on the similarity function \u03b4 (\u00b7).\n"
         },
         "15": {
           "position": [
@@ -370,7 +372,7 @@
             830.5985302122119,
             1483.0791183984543
           ],
-          "content": ""
+          "content": "It is NP-hard to process the NSMatch, since its special case (i.e.,\nsubgraph isomorphism) is NP-complete [14].\n"
         }
       },
       "table": {
@@ -390,6 +392,7 @@
           1017.6845170949543,
           737.3574968143377,
           1138.7609676491925,
+          2,
           ""
         ]
       ]
@@ -521,7 +524,7 @@
             824.2237896566219,
             651.5402561563177
           ],
-          "content": "Neural-symbolic subgraph matching (NSMatch). Given a graph\npattern Q=(Vq, Eq, Lq, Cq ) and an NSGD G=(V , E, L, F,T ), a sub-\ngraph match h(Q) of Q in G is a mapping h from Q to G such that\n(1) for each node u \u2208 Vq , Lq (u) = L(h(u)); and (2) for each edge\ne=(u,v) \u2208 Eq , Lq (e) = L(h(u), h(v)). The neural-symbolic subgraph\nmatching needs to compute a match score S(h(Q)) between Q and\nh(Q). Given a similarity function \u03b4 (\u00b7), S(h(Q)) is computed as\nS(h(Q)) = (cid:213)\nv \u2208Vq\n\u03b4 (Cv , Ch(v))\n"
+          "content": "\u222a V p\nl\nto its position in V h\nl\n"
         },
         "10": {
           "position": [
@@ -530,7 +533,7 @@
             825.5489452066073,
             862.0738649942319
           ],
-          "content": "where Cv and Ch(v) are the content vectors of nodes v and h(v),\nrespectively.\n"
+          "content": ""
         },
         "11": {
           "position": [
@@ -548,7 +551,7 @@
             696.2846717226175,
             1643.129986431301
           ],
-          "content": ""
+          "content": "Figure 5: Procedure of star matching.\n"
         },
         "13": {
           "position": [
@@ -557,7 +560,7 @@
             825.1662457448117,
             1970.4474510417149
           ],
-          "content": "(1) Pattern decomposition. Once a graph pattern Q is submitted,\na procedure DecQ is invoked to decompose Q into a set of star\npatterns SQ = {sq1, ...sqm }.\n(2) Star matching. In this step, we propose an algorithm SMat which\ncan efficiently generate a set of top matches for each star pattern\nand guarantee that the matches are generated progressively in a\ndescending order of the match score for each star pattern.\n(3) Top-k join. The top matches produced by SMat for multiple star\npatterns are then joined by a join procedure JoinK. JoinK terminates\nonce the top-k matches are identified, or there is no chance to obtain\nbetter matches.\n"
+          "content": "Example 4.1. We demonstrate how SMat computes top-3 matches\nfor the star pattern sq in Fig.5(a) through the three phases. During\nPhase 1, SMat first identifies the candidate node matches VA =\n{A1, ..., An } of pivot A and leaf nodes candidates VB and VC . As-\nsuming h = 4, it next selects top-4 leaf matches for every leaf node\nwith a descending order given in Fig.5(b) for V 4\nC . After that,\nevery pivot candidate vA \u2208 VA finds its neighbors in V 4\nB and V 4\nC .\nFor example, the pivot match A3 in VA finds its neighbors B1, B4,\nC2, C3 and C4 as shown in Fig.5(d). To this end, every pivot match\nvA can easily obtain its top-1 star matches.\nB and V 4\n"
         },
         "14": {
           "position": [
@@ -566,7 +569,7 @@
             1556.5346116425085,
             573.5978832960759
           ],
-          "content": "In the rest of this paper, we first introduce star matching, and\nafterwards pattern decomposition and top-k join.\n4 TOP-K STAR MATCHING\nIn this section, we propose the algorithm SMat for computing\nthe top-k star matches. We first give a framework of SMat in the\nsub-section 4.1. Next, in the sub-section 4.2, we introduce how to\nefficiently identify the top-k matching nodes for any node of a\nstar pattern. Finally, in the sub-section 4.3, we illustrate how to\naccurately complete the missing edges of top-k star matches.\n4.1 Framework of SMat\n"
+          "content": "Phase 2 starts. Among the top-1 star matches at every vA, SMat\nselects the best three star matches to form a pseudo top-3 star\nmatches given in Fig.5(c). SMat then sorts the leaf matches for\neach pivot in a descending list. To form the list, SMat needs to\nscan the neighbors (denoted by Xnbr ) of pivot matches which are\nnot in V h\n. For example, in Fig.5(d), among A1\u2019s neighbors SMat\nl\n= 0.85 is larger than B3 = 0.80, and thus\nfinds its neighbor Bnbr\ninserts Bnbr to its descending list. Similarly, SMat also computes\n= 0.70 for A3. At the final of Phase\nCnbr\n2, pivot matches A1, A2 and A3 hold the descending lists for leaf\nmatches as given in Fig.5(d).\n= 0.89 for A2 and Bnbr\n"
         },
         "15": {
           "position": [
@@ -575,7 +578,7 @@
             1557.9372457011473,
             756.321647992085
           ],
-          "content": "Algorithm SMat\nInput: a star pattern sq, an NSGD G, any content vectors Csq and\nCg, any structural vector Sg, integer k\n"
+          "content": "Fig. 5(e) shows the procedure of Phase 3. SMat first pops from\npriority queue P the best match A2B1C1 inserted into R, which is the\ntop-1 match pivoted at A2. SMat then generates the next best match\nA2B1Cnbr pivoted at A2 and adds it into P. Following the same rule,\nSqMat terminates until P pops up A1B2C2 and |R| = 3. Finally the\n\u25a1\nanswer is returned as R = {A2B1C1, A2B1Cnbr , A1B2C2}.\n"
         }
       },
       "table": {
@@ -595,7 +598,8 @@
           1133.4329267313203,
           837.128739757633,
           1584.8497605070543,
-          "Figure 3: Top-3 subgraph matches of P1 in G.\nExample 2.1. One may issue a pattern P1 in Fig.2 against the\nNSGD G in Fig.1 and want to find top-3 answers. We first compute\nall subgraph matches of P1 in G: mo1ac1ac2, mo1ac3ac2, mo3ac5ac6\nand mo2ac5ac4. The top-3 answers are mo1ac1ac2, mo1ac3ac2 and\nmo3ac5ac6 shown in Fig. 3, since their matching scores are larger\n\u25a1\nthan that of mo2ac5ac4 based on the similarity function \u03b4 (\u00b7).\nIt is NP-hard to process the NSMatch, since its special case (i.e.,\nsubgraph isomorphism) is NP-complete [14].\n"
+          3,
+          ""
         ]
       ]
     },
@@ -699,7 +703,7 @@
               825.8738771019289,
               1275.3677674720357
             ],
-            "content": ""
+            "content": "To solve the issue, NMat designs an edge deletion strategy to\nalleviate the problem caused by the uneven distribution.\n(2) Edge deletion.\n"
           },
           "11": {
             "position": [
@@ -708,7 +712,7 @@
               833.3386071614157,
               1643.5917326333602
             ],
-            "content": "Figure 5: Procedure of star matching.\n"
+            "content": "NMat performs the edge deletion as follows. (1) For any node\nu in IG , NMat first sorts u\u2019s neighbors {v} in an ascending or-\nder of the distance from u to v. Denote by Eu the edge set Eu =\n{(u, v)|v is a neighbor of u in IG }. With the sorted Eu , NMat chooses\nthe shortest edge Eu [0] and marks it as checked. (2) NMat then\njudges whether there exists an unchecked edge Eu [j] (j > 0) in\nEu whose angle formed with v is less than a given \u03b1. If such Eu [j]\nexists, the longer edge will be deleted. This deletion process is exe-\ncuted for all the remaining unchecked edges in Eu . (3) Denote by\nE \u2032\nu the the undeleted edge set in Eu after the above process. The\nnext iteration starts with the shortest edge in E \u2032\nu . NMat finishes all\nthe iterations when all non-deleted edges have been checked.\n"
           },
           "12": {
             "position": [
@@ -717,7 +721,7 @@
               824.4265307761817,
               1798.0769727803179
             ],
-            "content": ""
+            "content": "For example, in Fig 6, node p\u2019s neighbors are unevenly distributed\nin directions. Assuming the angle formed by p1, p, and p2 is larger\nthan \u03b1, the longer edge (p, p1) will be removed. As a result, the cost\nof finding q\u2019s nearest neighbor will be reduced to 4 search iterations\nand 10 distance calculations.\n"
           },
           "13": {
             "position": [
@@ -726,7 +730,7 @@
               823.1834614875669,
               1948.8044615744216
             ],
-            "content": "B and V 4\n"
+            "content": "After the edge deletion process, the connectivity of IG may be\ndestroyed. To still guarantee the connectivity of IG , NMat does the\nfollowing: (1) NMat first detects the strongly connected components\n(SCCs) of IG after the edge deletion process. (2) NMat finds out\nthe node nearest to the geometric center of SCC in the embedding\n"
           },
           "14": {
             "position": [
@@ -735,7 +739,7 @@
               1556.2269161554996,
               359.8312957337113
             ],
-            "content": ""
+            "content": "space Ed . NMat then spans a breadth-first-search (BFS) tree from\nthe node. (3) For each leaf node of the BFS tree, NMat finds out\nits approximate nearest neighbors (ANNs) in other SCCs and add\nedges between leaf nodes and its ANNs.\n"
           }
         },
         "figure": [
@@ -744,7 +748,8 @@
             231.17256047807453,
             754.3740982567269,
             533.8428528951748,
-            "\u222a V p\nl\n"
+            4,
+            ""
           ]
         ]
       }
@@ -867,7 +872,7 @@
               827.4038216615709,
               298.864704761961
             ],
-            "content": ""
+            "content": "v for node v.\n"
           },
           "13": {
             "position": [
@@ -885,7 +890,7 @@
               831.4773310499004,
               401.4312548210843
             ],
-            "content": ""
+            "content": "The idea of entanglement is to fuse the content vector Cu (resp.\nCv) into SP\nu (resp. SP\nv ).\n"
           },
           "15": {
             "position": [
@@ -894,7 +899,7 @@
               830.1439839395287,
               522.3746029622971
             ],
-            "content": ""
+            "content": "A simple way for entanglement is to concatenate Cu and SP\nu. Con-\nsidering that the impacts on Sl from Cu and Cv to be distinct, EJud\nfirst introduces an MLP-based attention mechanism to calculate\nthe relevance between Cu and Sl given by Equ. (5).\n"
           },
           "16": {
             "position": [
@@ -903,7 +908,7 @@
               828.7899872706831,
               683.292692801574
             ],
-            "content": ""
+            "content": "where VT, W and U are parameters to be trained, and tanh(\u00b7) is an\nactive function.\n"
           },
           "17": {
             "position": [
@@ -912,7 +917,7 @@
               830.000290317753,
               778.4675900200727
             ],
-            "content": ""
+            "content": "Accordingly, EJud can obtain the relevance Attv,l between Cv\nu by concate-\nand Sl . With the relevance, EJud entangles Cu and SP\nnating Cu \u00b7 Attu,l with SP\n"
           },
           "18": {
             "position": [
@@ -930,7 +935,7 @@
               539.4249085299089,
               860.5436068611262
             ],
-            "content": ""
+            "content": "EJud can also obtain Ev for node v.\n"
           },
           "20": {
             "position": [
@@ -939,7 +944,7 @@
               827.7873744109066,
               1379.8795975482583
             ],
-            "content": "(2) Edge deletion.\n"
+            "content": "(3) Model training.\nWith Eu and Ev , EJud finally outputs a predicted label lout for\nedge (u, v) given by Equ. (7).\nlout = softmax(MLP(Concat(Eu, Ev)))\n(7)\n"
           },
           "21": {
             "position": [
@@ -948,7 +953,7 @@
               786.2623069228619,
               1450.6227747612365
             ],
-            "content": ""
+            "content": "If lout is the same as the judged label le , EJud returns true and\nfalse otherwise.\n"
           },
           "22": {
             "position": [
@@ -957,7 +962,7 @@
               831.6005457707104,
               1522.6075138268616
             ],
-            "content": ""
+            "content": "The model could be trained by a simple cross entropy loss func-\ntion, as given by Equ. (8):\n"
           },
           "23": {
             "position": [
@@ -966,7 +971,7 @@
               566.6338589829013,
               1593.6024610518675
             ],
-            "content": ""
+            "content": "where Hl is the one hot vector of label l .\n"
           },
           "24": {
             "position": [
@@ -975,7 +980,7 @@
               820.5789719285065,
               1624.4036686300137
             ],
-            "content": ""
+            "content": "Fig. 7 shows the complete process for building the model EJud.\n"
           }
         },
         "list": {
@@ -995,6 +1000,7 @@
             887.8050119934973,
             764.6120128219785,
             1192.7376048345088,
+            5,
             ""
           ]
         ]
@@ -1106,7 +1112,7 @@
               826.1823405477239,
               449.7709712454387
             ],
-            "content": "ground trues after the symbolic enhancement. Accordingly, EJud\nalso obtains the new structural vector SP\n(2) Entangling content and structural vectors.\nv for node v.\nThe idea of entanglement is to fuse the content vector Cu (resp.\nCv) into SP\nu (resp. SP\nv ).\n"
+            "content": "3, JoinK updates lower bound as LB = 2.4. For sq2, the upper\nbound is A3B3C3+B1C1=1.6+0.9=2.5>2.4. Therefore, JoinK finds\nthe next match A4B3C4 for sq2 and computes the upper bound as\nA4B3C4+B1C1=1.4+0.9=2.3. Since 2.3<2.4, sq2 can be removed from\nSQ. Based on the same principle, the upper bound of sq1 is 2.3 and\nhence sq1 can be removed from SQ. Finally the three results are\n\u25a1\nA1B1C1, A2B1C1 and A3B3C3, and the total depth is 6.\n"
           }
         },
         "figure": [
@@ -1115,6 +1121,7 @@
             1214.268137029763,
             1481.4721013305618,
             1618.8278020969688,
+            5,
             ""
           ]
         ]
@@ -1295,7 +1302,7 @@
               829.083006212,
               359.11849286799156
             ],
-            "content": ""
+            "content": "1024; the learning rate is set to be 10\u22125; and the training batch size\nis 64, while the negative sample size is 128. The \u03b2 in the joining\nalgorithm and the search depth h of ANNS will be determined in\nthe experiments.\n"
           }
         },
         "list": {
@@ -1474,7 +1481,7 @@
               780.3106263297203,
               727.1419232147359
             ],
-            "content": ""
+            "content": "Figure 14: Running time w.r.t. different graph sizes.\n"
           },
           "17": {
             "position": [
@@ -1483,7 +1490,7 @@
               828.2186259337416,
               941.0425363468368
             ],
-            "content": "Figure 9: Running time of NSMatch w.r.t. \u03b2 and h.\n"
+            "content": "Running time. Fig. 14 reports the results, from which we find that (1)\nwhen the graph size increases, the running time of all the algorithms\nincreases, more obvious for edges than for nodes; (2) NSMatch\nand NSnop outperform their competitors by at least two orders of\nmagnitude; and (3) NSMatch further improves NSnop by 75%\u201385%,\nas expected.\n"
           },
           "18": {
             "position": [
@@ -1492,7 +1499,7 @@
               766.3602283344127,
               1191.7185237491572
             ],
-            "content": ""
+            "content": "Figure 15: Recall rates w.r.t. different graph sizes.\n"
           },
           "19": {
             "position": [
@@ -1501,7 +1508,7 @@
               827.7202206814901,
               1426.4394258725815
             ],
-            "content": ""
+            "content": "Recall rates. Fig. 15 gives the recall rates with different graph sizes.\nAs shown in the figure, (1) with the increase of graph size, all\nthe plots decrease but NSMatch is the slowest; and (2) NSMatch\nhas a high recall (i.e., 91%) even for a graph of 3000M edges, and\nhas higher recalls 10% 15% and 20% than other three algorithms\non average. These experimental results show that our proposed\nmethod is very scalable with respect to different graph sizes.\n"
           }
         },
         "figure": [
@@ -1510,6 +1517,7 @@
             524.2969509274676,
             775.1450795473975,
             750.2356954146715,
+            7,
             ""
           ],
           [
@@ -1517,6 +1525,7 @@
             1396.3277324340422,
             781.1336221622773,
             1615.24326851239,
+            7,
             ""
           ],
           [
@@ -1524,6 +1533,7 @@
             230.722920217427,
             1514.346710393209,
             454.6337411810833,
+            7,
             ""
           ],
           [
@@ -1531,6 +1541,7 @@
             841.0300881555651,
             1510.013886921402,
             1063.4125812228745,
+            7,
             ""
           ],
           [
@@ -1538,6 +1549,7 @@
             1542.8316953530402,
             1511.5378584682621,
             1766.362511445209,
+            7,
             ""
           ],
           [
@@ -1545,6 +1557,7 @@
             492.1793638414334,
             776.7795518307184,
             685.8732515015229,
+            8,
             ""
           ],
           [
@@ -1552,6 +1565,7 @@
             955.3597737741537,
             780.6635460563616,
             1152.476978287787,
+            8,
             ""
           ]
         ]
@@ -1661,7 +1675,7 @@
             824.631063799576,
             1734.2405183839644
           ],
-          "content": ""
+          "content": "[24] Y. A. Malkov and D. A. Yashunin. Efficient and robust approximate nearest neigh-\nbor search using hierarchical navigable small world graphs. IEEE transactions on\n"
         }
       },
       "list": {
@@ -1672,7 +1686,7 @@
             825.6108085532743,
             1710.9076485959397
           ],
-          "content": "consistently, which shows the robustness of NSMatch in solving\nthe problem of approximate search over incomplete graphs.\nExp-4: varying |G |. This experiment studies the scalability of the\nalgorithms over IMGpedia. Specifically, we generate graphs from\nIMGpedia by varying |N | (number of nodes) from 10M to 500M and\n|E| (number of edges) from 100M to 3000M. Under these graphs,\nwe report the results of running time and recall rates of different\nalgorithms.\nFigure 14: Running time w.r.t. different graph sizes.\nRunning time. Fig. 14 reports the results, from which we find that (1)\nwhen the graph size increases, the running time of all the algorithms\nincreases, more obvious for edges than for nodes; (2) NSMatch\nand NSnop outperform their competitors by at least two orders of\nmagnitude; and (3) NSMatch further improves NSnop by 75%\u201385%,\nas expected.\nFigure 15: Recall rates w.r.t. different graph sizes.\nRecall rates. Fig. 15 gives the recall rates with different graph sizes.\nAs shown in the figure, (1) with the increase of graph size, all\nthe plots decrease but NSMatch is the slowest; and (2) NSMatch\nhas a high recall (i.e., 91%) even for a graph of 3000M edges, and\nhas higher recalls 10% 15% and 20% than other three algorithms\non average. These experimental results show that our proposed\nmethod is very scalable with respect to different graph sizes.\n"
+          "content": "sions. In SODA, volume 93, pages 271\u2013280, 1993.\n[2] B. Bhattarai, H. Liu, and H. H. Huang. Ceci: Compact embedding cluster index for\nscalable subgraph matching. In Proceedings of the 2019 International Conference\non Management of Data, pages 1447\u20131462, 2019.\n[3] A. Bordes, N. Usunier, A. Garcia-Duran, J. Weston, and O. Yakhnenko. Translating\nembeddings for modeling multi-relational data. Advances in neural information\nprocessing systems, 26, 2013.\n[4] X. Chen, N. Zhang, L. Li, S. Deng, C. Tan, C. Xu, F. Huang, L. Si, and H. Chen.\nHybrid transformer with multi-level fusion for multimodal knowledge graph\ncompletion. arXiv preprint arXiv:2205.02357, 2022.\n[5] L. P. Cordella, P. Foggia, C. Sansone, and M. Vento. A (sub)graph isomorphism\nIEEE Trans. Pattern Anal. Mach. Intell.,\nalgorithm for matching large graphs.\n26(10):1367\u20131372, 2004.\n[6] D. Dearholt, N. Gonzales, and G. Kurup. Monotonic search networks for computer\nvision databases. In Twenty-Second Asilomar Conference on Signals, Systems and\nComputers, volume 2, pages 548\u2013553. IEEE, 1988.\n[7] L. Dietz, A. Kotov, and E. Meij. Utilizing knowledge graphs for text-centric\ninformation retrieval. In The 41st international ACM SIGIR conference on research\n& development in information retrieval, pages 1387\u20131390, 2018.\n[8] W. Dong, M. Charikar, and K. Li. Efficient k-nearest neighbor graph construction\nfor generic similarity measures. In S. Srinivasan, K. Ramamritham, A. Kumar, M. P.\nRavindra, E. Bertino, and R. Kumar, editors, Proceedings of the 20th International\nConference on World Wide Web, WWW 2011, Hyderabad, India, March 28 - April 1,\n2011, pages 577\u2013586. ACM, 2011.\n[9] D. H. (ed.). Approximation algorithms for NP-Hard problems. PWS, 1997.\n[10] R. Fagin, A. Lotem, and M. Naor. Optimal aggregation algorithms for middleware.\nJ. Comput. Syst. Sci., 66(4):614\u2013656, 2003.\n[11] S. Ferrada, B. Bustos, and A. Hogan. Imgpedia: a linked dataset with content-\nbased analysis of wikimedia images. In International Semantic Web Conference,\npages 84\u201393. Springer, 2017.\n[12] C. Fu, C. Wang, and D. Cai. High dimensional similarity search with satellite\nsystem graph: Efficiency, scalability, and unindexed query compatibility. IEEE\nTransactions on Pattern Analysis and Machine Intelligence, 2021.\n[13] C. Fu, C. Xiang, C. Wang, and D. Cai. Fast approximate nearest neighbor search\nwith the navigating spreading-out graph. arXiv preprint arXiv:1707.00143, 2017.\n[14] M. R. Garey and D. S. Johnson. Computers and intractability: a guide to the theory\nof NP-completeness. W.H.Freeman, 1979.\n[15] W. Gong, E.-P. Lim, and F. Zhu. Characterizing silent users in social media\ncommunities. In Proceedings of the International AAAI Conference on Web and\nSocial Media, volume 9, pages 140\u2013149, 2015.\n[16] M. Han, H. Kim, G. Gu, K. Park, and W.-S. Han. Efficient subgraph matching:\nHarmonizing dynamic programming, adaptive matching order, and failing set\ntogether. In Proceedings of the 2019 International Conference on Management of\nData, pages 1429\u20131446, 2019.\n[17] W.-S. Han, J. Lee, and J.-H. Lee. Turboiso: towards ultrafast and robust subgraph\nisomorphism search in large graph databases. In Proceedings of the 2013 ACM\nSIGMOD International Conference on Management of Data, pages 337\u2013348, 2013.\n[18] S. Harnad. The symbol grounding problem. Physica D: Nonlinear Phenomena,\n42(1-3):335\u2013346, 1990.\n[19] H. He and A. K. Singh. Graphs-at-a-time: query language and access methods for\ngraph databases. In Proceedings of the 2008 ACM SIGMOD international conference\non Management of data, pages 405\u2013418, 2008.\n[20] J. Huang, W. X. Zhao, H. Dou, J.-R. Wen, and E. Y. Chang. Improving sequential\nIn The 41st\nrecommendation with knowledge-enhanced memory networks.\nInternational ACM SIGIR Conference on Research & Development in Information\nRetrieval, pages 505\u2013514, 2018.\n[21] I. F. Ilyas, W. G. Aref, and A. K. Elmagarmid. Supporting top-k join queries in\nrelational databases. VLDB J., 13(3):207\u2013221, 2004.\n[22] Y. LeCun, Y. Bengio, and G. Hinton. Deep learning. nature, 521(7553):436\u2013444,\n2015.\n[23] Y. Liu, H. Li, A. Garcia-Duran, M. Niepert, D. Onoro-Rubio, and D. S. Rosenblum.\nMmkg: multi-modal knowledge graphs. In European Semantic Web Conference,\npages 459\u2013474. Springer, 2019.\n"
         },
         "1": {
           "position": [
@@ -1681,7 +1695,7 @@
             1557.6194814211638,
             1748.9702390143207
           ],
-          "content": "encode the visual and structural features into a unified embedding\nspace.\nApproximate nearest neighbors search (ANNS). In this paper, we fo-\ncus on graph-based methods since extensive experimental studies\nhave shown their superiority on search performance among the\nANNS methods [13, 24, 32].\nAmong graph-based methods, two state-of-the-art works are\nHNSW [24] and NSG [13]. Hierarchical navigating small world\n(HNSW) [24] uses a hierarchical structure built on a navigating\nsmall world graph. HNSW conducts the search in the direction from\nthe top layer to the base layer and ensures that a locally nearest\ngraph node can be found in each layer. Navigating spreading-out\n(NSG) [13] uses a single-layer graph structure. Specifically, the au-\nthors in [13] proposed monotonic relative navigating graph (MRNG)\nbased on ideas of MSNET [1] and RNG [6]. Recently, inspired by\nthe superior performance of HNSW, other graph-based methods\ninclude theoretical analysis of KNN graph[26], a KNN graph built\non Jaccards index, and multi-core capacity-optimized multi-store\nANN algorithm [43].\nNSMatch differs from all the prior works in the following. (1)\nTraditional subgraph matching is based on the pure symbolic se-\nmantics (i.e., subgraph isomorphism), whereas NSMatch is defined\nfrom the neural-symbolic semantics (i.e., top-k subgraph matching\nbased on the neural embeddings). (2) Algorithms for traditional\nsubgraph matching cannot be used to process NSMatch. Despite\nthe increased expressive power of NSMatch, its complexity is no\nharder than the traditional subgraph matching. We provide prac-\ntical algorithms to support a good scalability of NSMatch over\nlarge graphs. (3) It may lower the search efficiency to directly apply\nthe existing ANNS algorithms over NSGDs, because they do not\nconsider the skewed distribution of embeddings of NSGDs. (4) Our\napproach enables the neural and symbolic reasoning to enhance\neach other to alleviate the cascading error and to include content\nvectors which do not be paid attention to by the existing works on\ngraph incompleteness.\n8 CONCLUSION\nWe have studied neural-symbolic subgraph matching (NSMatch).\nThe novelty of this work consists of the following: (1) neural-\nsymbolic graph database (NSGD) model to support applications of\nmulti-modal knowledge graphs and multi-modal social medias; (2)\na general and efficient algorithmic framework to process the NS-\nMatch; (3) strategies of edge deletion to speed up the graph-based\nANNS; and (4) a neural-symbolic learning model to complete the\nmissing edges of the NSGD. Our experimental study has verified\nthat the method is promising in practice.\nOne topic for future work is to study the incremental NSMatch.\nAnother topic is to investigate more pattern types (e.g., shortest\npath and clique finding) over large NSGDs.\n"
+          "content": "pattern analysis and machine intelligence, 42(4):824\u2013836, 2018.\n[25] H. Mousselly-Sergieh, T. Botschen, I. Gurevych, and S. Roth. A multimodal\ntranslation-based approach for knowledge graph representation learning. In Pro-\nceedings of the Seventh Joint Conference on Lexical and Computational Semantics,\npages 225\u2013234, 2018.\n[26] L. Prokhorenkova and A. Shekhovtsov. Graph-based nearest neighbor search:\nFrom practice to theory. In International Conference on Machine Learning, pages\n7803\u20137813. PMLR, 2020.\n[27] H. Ren and J. Leskovec. Beta embeddings for multi-hop logical reasoning in\nknowledge graphs. Advances in Neural Information Processing Systems, 33:19716\u2013\n19726, 2020.\n[28] H. Shang, Y. Zhang, X. Lin, and J. X. Yu. Taming verification hardness: an efficient\nalgorithm for testing subgraph isomorphism. Proceedings of the VLDB Endowment,\n1(1):364\u2013375, 2008.\n[29] Z. Sun, Z. Deng, J. Nie, and J. Tang. Rotate: Knowledge graph embedding by\nrelational rotation in complex space. In 7th International Conference on Learning\nRepresentations, ICLR 2019, New Orleans, LA, USA, May 6-9, 2019. OpenReview.net,\n2019.\n[30] J. R. Ullmann. An algorithm for subgraph isomorphism. Journal of the ACM\n(JACM), 23(1):31\u201342, 1976.\n[31] M. Wang, H. Wang, G. Qi, and Q. Zheng. Richpedia: a large-scale, comprehensive\nmulti-modal knowledge graph. Big Data Research, 22:100159, 2020.\n[32] M. Wang, X. Xu, Q. Yue, and Y. Wang. A comprehensive survey and experimental\ncomparison of graph-based approximate nearest neighbor search. Proc. VLDB\nEndow., 14(11):1964\u20131978, 2021.\n[33] Z. Wang, L. Li, Q. Li, and D. Zeng. Multimodal data enhanced representation\nlearning for knowledge graphs. In 2019 International Joint Conference on Neural\nNetworks (IJCNN), pages 1\u20138. IEEE, 2019.\n[34] Z. Wang, J. Zhang, J. Feng, and Z. Chen. Knowledge graph embedding by\ntranslating on hyperplanes. In Proceedings of the AAAI Conference on Artificial\nIntelligence, volume 28, 2014.\n[35] Y. Wei, X. Wang, L. Nie, X. He, R. Hong, and T.-S. Chua. Mmgcn: Multi-modal\ngraph convolution network for personalized recommendation of micro-video.\nIn Proceedings of the 27th ACM International Conference on Multimedia, pages\n1437\u20131445, 2019.\n[36] Y. Wu, S. Yang, and X. Yan. Ontology-based subgraph querying. In 2013 IEEE\n29th International Conference on Data Engineering (ICDE), pages 697\u2013708. IEEE,\n2013.\n[37] R. Xie, Z. Liu, H. Luan, and M. Sun. Image-embodied knowledge representation\nlearning. arXiv preprint arXiv:1609.07028, 2016.\n[38] Z. Yang. Biomedical information retrieval incorporating knowledge graph for\nexplainable precision medicine. In Proceedings of the 43rd International ACM\nSIGIR Conference on Research and Development in Information Retrieval, pages\n2486\u20132486, 2020.\n[39] Y. Yuan, L. Chen, and G. Wang. Efficiently answering probability threshold-based\nshortest path queries over uncertain graphs. In Database Systems for Advanced\nApplications: 15th International Conference, DASFAA 2010, Tsukuba, Japan, April\n1-4, 2010, Proceedings, Part I 15, pages 155\u2013170. Springer, 2010.\n[40] Y. Yuan, G. Wang, L. Chen, and H. Wang. Efficient subgraph similarity search on\nlarge probabilistic graph databases. Proceedings of the VLDB Endowment, 5(9),\n2012.\n[41] Y. Yuan, G. Wang, L. Chen, and H. Wang. Efficient keyword search on uncertain\ngraph data. IEEE Transactions on Knowledge and Data Engineering, 25(12):2767\u2013\n2779, 2013.\n[42] Y. Yuan, G. Wang, H. Wang, and L. Chen. Efficient subgraph search over large\nuncertain graphs. Proceedings of the VLDB Endowment, 4(11):876\u2013886, 2011.\n[43] M. Zhang and Y. He. Grip: Multi-store capacity-optimized high-performance\nIn Proceedings of the 28th\nnearest neighbor search for vector search engine.\nACM International Conference on Information and Knowledge Management, pages\n1673\u20131682, 2019.\n[44] Z. Zhang, J. Wang, J. Chen, S. Ji, and F. Wu. Cone: Cone embeddings for multi-hop\nreasoning over knowledge graphs. Advances in Neural Information Processing\nSystems, 34:19172\u201319183, 2021.\n[45] P. Zhao and J. Han. On graph query optimization in large networks. Proceedings\nof the VLDB Endowment, 3(1-2):340\u2013351, 2010.\n[46] Y. Zhao, X. Cai, Y. Wu, H. Zhang, Y. Zhang, G. Zhao, and N. Jiang. Mose: Modality\nsplit and ensemble for multimodal knowledge graph completion. arXiv preprint\narXiv:2210.08821, 2022.\n"
         }
       }
     }

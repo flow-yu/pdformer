@@ -30,10 +30,12 @@ BERT_TITLE_MODEL_PATH = "resources/pretrained_model/bert-title/model_4epoch.h5"
 PRE_TRAINED_MODEL_NAME = "resources/pretrained_model/bert-base-uncased"
 
 class TitleDetecter():
-    def __init__(self, pdf_file, textbox_file, pics_folder, output_dir ):
+    def __init__(self, pdf_file, textbox_file, pics_folder, output_dir, temp_folder):
         self.PDF_file = pdf_file
         self.textbox_file = textbox_file
         self.pics_folder = pics_folder
+        self.output_dir = output_dir
+        self.temp_folder = temp_folder
         self.new_text_boxes = None
         self.layout = None
 
@@ -90,7 +92,7 @@ class TitleDetecter():
                 else:
                     new_text_boxes[str(i)].remove(box)
 
-        with open('output/origin_list2.txt', 'w') as f:
+        with open(os.path.join(self.temp_folder, 'origin_list2.txt'), 'w') as f:
             for item in filtered_list:
                 f.write("%s\n" % item)
 
@@ -103,7 +105,7 @@ class TitleDetecter():
         prediction = model.predict(filtered_list)
 
         merged_array = np.concatenate(( text_list.reshape(-1, 1), prediction), axis=1)
-        with open('output/ans_list.txt', 'w') as f:
+        with open(os.path.join(self.temp_folder, 'ans_list.txt'), 'w') as f:
             for item in merged_array:
                 f.write("%s\n" % item)
 
@@ -111,7 +113,7 @@ class TitleDetecter():
         for i in range(len(merged_array)):
             if float(merged_array[i][1]) > filter_threhold:
                 ans_array = np.vstack((ans_array, merged_array[i]))
-        with open('output/ans_title_list.txt', 'w') as f:
+        with open(os.path.join(self.temp_folder, 'ans_title_list.txt'), 'w') as f:
             for item in ans_array:
                 f.write("%s\n" % item)
 
@@ -124,12 +126,10 @@ class TitleDetecter():
                 box_index = box_index+1
         print(box_index)
 
-        json_data = json.dumps(new_text_boxes, indent=2)
-        # 将JSON数据写入文本文件
-        with open('output/new_text_boxes.txt', "w") as file:
-            file.write(json_data)
         self.new_text_boxes = new_text_boxes
         main_instance.new_text_boxes = new_text_boxes
+        with open(os.path.join(self.temp_folder, 'new_text_boxes.json'), "w") as f:
+            json.dump(new_text_boxes, f, indent=2)
 
     def merge_title(self, main_instance):
         layout={}
@@ -159,12 +159,10 @@ class TitleDetecter():
                         layout[str(i)].append(new_box)
                         temp = box
 
-        json_data = json.dumps(layout, indent=2)
-        # 将JSON数据写入文本文件
-        with open('output/layout_title.txt', "w") as file:
-            file.write(json_data)
         self.layout = layout
         main_instance.layout = layout
+        with open(os.path.join(self.output_dir, 'layout_title.txt'), "w") as f:
+            json.dump(layout, f, indent=2)
 
     def detector(self, main_instance):
         self.bert_title(main_instance)
