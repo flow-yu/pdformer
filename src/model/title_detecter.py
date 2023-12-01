@@ -6,7 +6,7 @@ import copy
 import tensorflow as tf
 from transformers import TFBertModel, BertTokenizer
 
-from util.util import *
+from ..util.util import *
 
 BERT_TITLE_MODEL_PATH = "resources/pretrained_model/bert-title/model_4epoch.h5"
 PRE_TRAINED_MODEL_NAME = "resources/pretrained_model/bert-base-uncased"

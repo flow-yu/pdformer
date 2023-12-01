@@ -8,7 +8,7 @@ parent_dir = os.path.dirname(current_dir)
 sys.path.append(parent_dir)
 
 from src.pdformer import Pdformer
-from src.utile import *
+from src.util.util import *
 
 def main():
     parser = argparse.ArgumentParser()

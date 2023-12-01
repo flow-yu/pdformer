@@ -132,7 +132,7 @@
             1563.1972514141742,
             1565.2001181483233
           ],
-          "content": "In applications of online recommendation, question answering and information retrieval, a graph pattern could be issued over a knowledge graph. For example, a graph pattern $P_{1}$ in Fig.2 describes a movie as follows: a leading actor of the movie is Winslet; P contains an unknown actor cooperating with Winslet in this movie but $P_{1}$ has his photo associated with him; and the answer to $P_{1}$ should return the name of the movie. Graph pattern \u4e0a $\\ P_{2}$ in Fig.2 describes a football club as follows: $P_{2}$ has two photos of the club president (pr) and the team coach (co) but not their names; $\\ P_{2}$ \u95e8 also includes a star player (pl)of this club with name Ronaldo; and $P_{2}$ should return the possible names of the club. Graph pattern $P_{3}$ in Fig. 2 is issued over multi-modal social networks, e.g., Twitter. \u53e3"
+          "content": "In applications of online recommendation, question answering and information retrieval, a graph pattern could be issued over a knowledge graph. For example, a graph pattern $P_{1}$ in Fig.2 describes a movie as follows: a leading actor of the movie is Winslet; P contains an unknown actor cooperating with Winslet in this movie but $P_{1}$ has his photo associated with him; and the answer to $P_{1}$ should return the name of the movie. Graph pattern \u4e0a ${\\boldsymbol{P}}_{2}$ in Fig.2 describes a football club as follows: $P_{2}$ has two photos of the club president (pr) and the team coach (co) but not their names; $P_{2}$ \u95e8 also includes a star player (pl)of this club with name Ronaldo; and $\\ P_{2}$ should return the possible names of the club. Graph pattern $P_{3}$ in Fig. 2 is issued over multi-modal social networks, e.g., Twitter. \u53e3"
         },
         "10": {
           "position": [
@@ -214,7 +214,7 @@
           1488.8207842845768,
           1920.9571876240616,
           0,
-          "cooperate (C 1C hasActor CC cooperate ${\\hat{d}}i$ direct -111O IC CV WOn name: James Cameron $\\overline{{d i}}_{1}$ aC mo\nmovie: Titanic, Avatar\nprofile: \u81ea (vector\uff09 name: Titanic\ndirector: James Cameron\naC mo1 storyline: \u5192Vvecto aCs HO photo: name: Leonardo $\\sum_{\\mathbb{Q}}\\Gamma_{\\mathbb{Q}}$ IC $\\left(a w_{i}\\right)_{.}$  class: Oscar $\\zeta{\\overline{{\\langle\\Omega_{\\infty}}}}\\rangle$ (vector movie: Titanic IC6 L $\\begin{array}{l}{\\sim}\\\\ {\\sim}\\end{array}$ (vector) $\\varphi^{3}$  $\\scriptstyle{\\mathcal{C}}_{\\sim}$ year: 2009\npicture:\n"
+          "cooperate (C 1C hasActor CC cooperate ${\\dot{d}}i$ direct -111O IC CV WOn name: James Cameron $\\overline{{d i}}_{1}$ aC mo\nmovie: Titanic, Avatar\nprofile: \u81ea (vector\uff09 name: Titanic\ndirector: James Cameron\naC mo1 storyline: \u5192Vvecto aCs HO photo: name: Leonardo $\\sum_{\\mathbb{Q}}\\cdots$ IC $\\left(a w_{1}\\right)_{.}$  class: Oscar $\\zeta{\\overline{{\\langle\\Omega_{\\infty}}}}\\rangle$ (vector movie: Titanic IC6 L $\\begin{array}{l}{\\sim}\\\\ {\\sim}\\end{array}$ (vector) $\\varphi^{3}$  $\\scriptstyle{\\mathcal{C}}_{\\sim}$ year: 2009\npicture:\n"
         ],
         [
           176.81844507678088,
@@ -222,7 +222,7 @@
           760.6987508337053,
           598.5106518712446,
           1,
-          "movie; mo actor: ac award: aw director: ${\\tilde{d}}{\\tilde{t}}$ \npresident: pr club: $c I$ player: ${\\mathfrak{p}}{\\tilde{l}}$ coach: ${\\mathfrak{c o}}$ person: $p_{\\bar{\\jmath}}{}^{\\bar{\\jmath}}$ \nphoo 8 comment:E (vector) (vector) $\\left(p r\\right)$  $(p s_{.}$ name: $\\scriptstyle{\\mathcal{Y}}$ manager follow $\\scriptstyle(\\omega)$  $c l$ name: $\\scriptstyle{\\gamma}$ job: ? hasActo1 hasActor hasPl hasCoach follow 4C cooperate IC $\\ f_{\\mathcal{U}}^{\\mathcal{I}}$  $\\sqrt{c^{*}O}$  $(p s(-1)$ name: Winslet photo:Ty name: Ronaldo photo: $\\Leftrightarrow_{-,\\qquad}$  $\\mathrm{picture:}\\!\\left(\\mathbb{Q}\\right)$ (vector\uff09 (vector\uff09 $(\\mathrm{vector})$  $P_{1}$  ${\\boldsymbol{P}}_{2}$  $P_{3}$ "
+          "movie; mo actor: ac award: aw director: ${\\tilde{d}}{\\tilde{t}}$ \npresident: pr club: $c I$ player: ${\\mathfrak{p}}l$ coach: ${\\mathfrak{c o}}$ person: $p_{\\bar{>}}^{\\bar{\\jmath}}$ \nphoo 8 comment:E (vector) (vector) $\\left(p r_{\\cdot}^{\\cdot}\\right)$  $(p s_{.}$ name: $\\scriptstyle{\\mathcal{Y}}$ manager follow $\\scriptstyle(\\omega)$  $c l$ name: $\\scriptstyle{\\gamma}$ job: ? hasActo1 hasActor hasPl hasCoach follow 4C cooperate IC $\\ f_{\\mathcal{U}}^{\\mathcal{I}}$  $\\sqrt{c^{*}O}$  $(p s(x)$ name: Winslet photo:Ty name: Ronaldo photo: $\\Leftrightarrow_{-,\\qquad}$  $\\mathrm{picture:}\\!\\left(\\mathbb{Q}\\right)$ (vector\uff09 (vector\uff09 $(\\mathrm{vector})$  $P_{1}$  $\\qquad P_{2}$  $P_{3}$ "
         ]
       ]
     }
@@ -318,7 +318,7 @@
             838.5439171431133,
             581.5625017415732
           ],
-          "content": "Similarity function. Given two vectors x and y with the same dimension, their similarity functions $\\delta(\\mathbf{x},\\mathbf{y})$ are commonly used similarity metrics, including Euclidean distance, inner product, co sine similarity, and Hamming distance, depend on applications Neural-symbolic subgraph matching (NSMatch). Given a graph graph match $\\scriptstyle n(Q)$  $(V_{q},E_{q},L_{q},C_{q})$ and an NSGD G=( ${\\cal V},E,L,\\;F,T),$ a sub- pattern Q=\nof $\\textstyle{\\mathcal{Q}}$ in ${\\boldsymbol{G}}$ is a mapping $\\boldsymbol{\\mathit{h}}$ from $\\textstyle{\\mathcal{Q}}$ to ${\\boldsymbol{G}}$ such that (1) for each node u\u2208 Vg $L_{q}(u)\\,=\\,L(h(u));$ and\uff082) for each edge $e=(u,v)\\in E_{q}.$  $L_{q}(e)=L(h(u),h(v))$ .The neural-symbolic subgraph and matching needs to compute a match score S(h(Q)) between $\\textstyle{\\mathcal{Q}}$  $h(Q).$ Given a similarity function $\\delta(\\cdot),\\,S(h(Q))$ is computed as"
+          "content": "Similarity function. Given two vectors x and y with the same dimension, their similarity functions $\\delta(\\mathbf{x},\\mathbf{y})$ are commonly used similarity metrics, including Euclidean distance, inner product, co sine similarity, and Hamming distance, depend on applications Neural-symbolic subgraph matching (NSMatch). Given a graph graph match $\\scriptstyle n(Q)$  $(V_{q},E_{q},L_{q},C_{q})$ and an NSGD G=( ${\\cal V},E,L,\\;F,T),$ a sub- pattern Q=\nof $\\textstyle{\\mathcal{Q}}$ in ${\\boldsymbol{G}}$ is a mapping $\\ \\boldsymbol{h}$ from $\\textstyle{\\mathcal{Q}}$ to ${\\boldsymbol{G}}$ such that (1) for each node u\u2208 Vg $L_{q}(u)\\,=\\,L(h(u));$ and\uff082) for each edge $e=(u,v)\\in E_{q}.$  $L_{\\boldsymbol{q}}({\\boldsymbol{e}})=L(h(u),h({\\boldsymbol{v}}))$ .The neural-symbolic subgraph and matching needs to compute a match score S(h(Q)) between $\\textstyle{\\mathcal{Q}}$  $h(Q).$ Given a similarity function $\\delta(\\cdot),\\,S(h(Q))$ is computed as"
         },
         "10": {
           "position": [
@@ -383,7 +383,7 @@
             734.7399519559117,
             1144.8787271714589
           ],
-          "content": "\n$$\n\\begin{array}{r l}{\\overbrace{(a c)}^{\\prime m_{0}}\\!\\!\\sqrt{\\sum_{\\Lambda_{\\Lambda_{\\Lambda}^{\\prime}}^{2}}^{2}}\\!\\!\\sim_{\\begin{array}{l}{{\\sqrt[[object Object]]{\\Lambda_{\\Lambda_{\\Lambda_{\\Lambda}^{\\prime}}}}}\\\\ {{\\sqrt[[object Object]]{\\Lambda_{\\Lambda_{\\Lambda_{\\Lambda}^{\\prime}}}}^{2}}}\\end{array}}}\\end{array}\n$$\n"
+          "content": "\n$$\n\\begin{array}{r l r l}{\\left(m_{0}\\right)}&{{}\\qquad}&{{}\\qquad}&{{}\\qquad}&{{}\\qquad}&{{}\\qquad}\\\\ {\\left(\\alpha c\\right)\\cfrac{\\sqrt{m_{0}} )}{\\sim}}&{{}\\qquad\\left(a c\\right)\\cfrac{\\sqrt{m_{0}} )}{\\sim}}\\\\ {\\left(\\alpha c\\right)\\cfrac{\\sqrt{m_{0}}\\sim}{\\infty}}&{{}}&{{}}\\end{array}\n$$\n"
         }
       },
       "figure": [
@@ -393,7 +393,7 @@
           737.3574968143377,
           1138.7609676491925,
           2,
-          "\nC $$\n\\begin{array}{r l}{\\overbrace{\\sum_{(1)}^{\\prime m_{0}}}\\sim\\sum_{(a,c_{2})}\\sum_{\\begin{array}{\\begin{array}{\\mathrm{~{\\displaystyle{\\sqrt{\\cdots_{1}}}}}\\sim}\\\\ {\\sim\\sqrt{\\textstyle{\\frac{\\sqrt{\\textstyle{\\frac{\\sqrt{\\cdots_{1}}{\\sqrt{\\sqrt{\\sqrt{\\ln{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\vphantom{\\sqrt{\\vphantom{a}}}}}}}}}}}}}}} .}}} .{\\vphantom{\\sqrt{\\ln{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\vphantom{{\\vphantom{{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\vphantom{{\\sqrt{\\vphantom{{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\vphantom{{\\sqrt{\\sqrt{\\vphantom{2}}}}}}}}}}}}}}}}}}}}}{\\sqrt{{\\sqrt{\\vphantom{{\\vphantom{{\\sqrt{\\vphantom{{{\\sqrt{{\\vphantom{{\\sqrt{{{\\vphantom{\\sqrt{\\vphantom{\\sqrt{{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\vphantom{\\vphantom{\\sqrt{\\vphantom{{\\{{\\sqrt{\\sqrt{\\vphantom{\\vphantom{\\sqrt{\\sqrt{\\vphantom{\\sqrt{\\sqrt{\\sqrt{\\vphantom{{\\sqrt{\\vphantom{\\sqrt{\\sqrt{{\\sqrt{{\\sqrt{\\sqrt{\\sqrt{\\sqrt{{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{{{{\\sqrt{\\sqrt{\\vphantom{\\sqrt{{\\sqrt{\\sqrt{\n$$ \u6c99\n"
+          "\nC $$\n\\begin{array}{r l}{\\overbrace{\\sum_{(1)}^{\\prime m_{0}}}^{\\prime arrow\\prime}\\sum_{(a,c_{3})}\\sum_{\\begin{array}{l}{\\sqrt{\\operatorname*{m}_{(a)}}\\end{array}}}&{{\\qquad\\qquad\\overbrace{\\mathcal{O}}\\sim\\chi_{0}}}\\\\ {\\sim\\chi_{0}^{\\prime}}\\end{array}}}\\end{array}\n$$ \u6c99\n"
         ]
       ]
     }
@@ -452,7 +452,7 @@
             1499.9377556737788,
             718.9531035735279
           ],
-          "content": "Algorithm SMat\nInput: a star pattern ${\\mathcal{L}}q,$ an NSGD G, any content vectors $\\mathbf{C}_{\\mathrm{sq}}$ and $\\mathbf{C}_{\\mathrm{g}},$ any structural vector ${\\mathbf{S}}_{\\mathbb{R}},$ integer $\\boldsymbol{k}$ \nOutput: top-k match set ${\\boldsymbol{R}}.$ \n"
+          "content": "Algorithm SMat\nInput: a star pattern ${\\mathcal{S}}q,$ an NSGD G, any content vectors $\\mathbf{C}_{\\mathrm{sq}}$ and $\\mathbf{C}_{\\mathrm{g}},$ any structural vector ${\\mathbf{S}}_{\\mathbb{g}},$ integer $\\boldsymbol{k}$ \nOutput: top-k match set ${\\boldsymbol{R}}.$ \n"
         },
         "2": {
           "position": [
@@ -479,7 +479,7 @@
             1546.92471670687,
             1603.4812449371443
           ],
-          "content": "Notice that Csq $C_{\\mathrm{g}}$ and $\\mathbf{S}_{\\mathbb{g}}$ denote the related vectors for an le in sq and G\n"
+          "content": "Notice that Csq $C_{\\mathfrak{g}}$ and $\\mathbf{S}_{\\mathbb{g}}$ denote the related vectors for an le in sq and G\n"
         },
         "5": {
           "position": [
@@ -497,7 +497,7 @@
             1563.9411474917513,
             1816.8674080113349
           ],
-          "content": "Phase 1. SMat first identifies candidate node matches ${\\mathit{V}}_{p}$ and ${\\mathit{V}}_{l}$ for the pivot node $~{\\mathcal{P}}$ and each leaf node ${\\mathit{l}}_{}^{}$ of sq in G (line 3). For each $v_{p}\\in V_{p}$ and $v_{l}\\in V_{l},$ SMat invokes EJud (given in Section 4.3) to judge whether an edge $(v_{p},v_{l})$ should exist in G (line 4). SMat adds $(v_{p},v_{l})$ to G if EJud returns true \uff08line 5). This step can assure a completed set of star matches of sg in G.\n"
+          "content": "Phase 1. SMat first identifies candidate node matches ${\\mathit{V}}_{p}$ and ${\\mathit{V}}_{l}$ for the pivot node $~{\\mathcal{P}}$ and each leaf node $\\mathit{l}$ of sq in G (line 3). For each $v_{p}\\in V_{p}$ and $v_{l}\\in V_{l},$ SMat invokes EJud (given in Section 4.3) to judge whether an edge $(v_{p},v_{l})$ should exist in G (line 4). SMat adds $(v_{p},v_{l})$ to G if EJud returns true \uff08line 5). This step can assure a completed set of star matches of sg in G.\n"
         },
         "7": {
           "position": [
@@ -515,7 +515,7 @@
             824.3419699809443,
             328.90550396127986
           ],
-          "content": "every pivot match $v_{{\\mathcal{X}}}\\,\\!\\rho$ identifies its leaf matches $V_{l}^{p}$ by scanning its neighbors in ${\\cal G},$ and $v_{p}$ can easily obtain its top-l star match after the scanning (lines 7-8)\n"
+          "content": "every pivot match $v_{{\\mathcal{X}}}{\\mathcal{P}}$ identifies its leaf matches $V_{l}^{p}$ by scanning its neighbors in ${\\cal G},$ and $v_{p}$ can easily obtain its top-l star match after the scanning (lines 7-8)\n"
         },
         "9": {
           "position": [
@@ -524,7 +524,7 @@
             824.2237896566219,
             651.5402561563177
           ],
-          "content": " $\\frac{P h a s e}{\\bigr.}$ 2. Among the top-1 star matches at every Up, SqMat selects the best $\\boldsymbol{k}$ star matches to form a pseudo top-k star matches which are inserted in a priority queue ${\\boldsymbol{P}}.$ Note that, these pseudo top-k star matches contain the potential pivot nodes in the final top $\\boldsymbol{k}$ answers (line 9). For the $\\boldsymbol{k}$ pivots in the pseudo top-k star matches, SqMat sorts the leaf matches $V_{l}^{h}\\cup V_{l}^{p}$ for each pivot (line 10). During the $V_{\\,\\,l}^{\\,p}$ to its position in $V_{l}^{h},$ since the sorting, SqMat adds the node in VP\n $V_{l}^{h}$ have been sorted. The leaf matches pivoted at $v_{P}$ are nodes in Vf\nsufficed for SMat to obtain the top-k star matches. Therefore, SMat only keeps top-k leaf matches for $v_{p}$ \n"
+          "content": " $\\frac{P h a s e}{\\theta}$ 2. Among the top-1 star matches at every Up, SqMat selects the best $\\boldsymbol{k}$ star matches to form a pseudo top-k star matches which are inserted in a priority queue ${\\boldsymbol{P}}.$ Note that, these pseudo top-k star matches contain the potential pivot nodes in the final top $\\boldsymbol{k}$ answers (line 9). For the $\\boldsymbol{k}$ pivots in the pseudo top-k star matches, SqMat sorts the leaf matches $V_{l}^{h}\\cup V_{l}^{p}$ for each pivot (line 10). During the $V_{\\,\\,l}^{\\,p}$ to its position in $V_{l}^{h},$ since the sorting, SqMat adds the node in VP\n $V_{l}^{h}$ have been sorted. The leaf matches pivoted at $v_{P}$ are nodes in Vf\nsufficed for SMat to obtain the top-k star matches. Therefore, SMat only keeps top-k leaf matches for $v_{p}$ \n"
         },
         "10": {
           "position": [
@@ -533,7 +533,7 @@
             825.5489452066073,
             862.0738649942319
           ],
-          "content": "Phase 3.SqMat maintains the priority queue ${\\boldsymbol{P}}.$ SqMat pops up the best match m from I ${\\boldsymbol{P}},$ and inserts it into an answer set ${\\boldsymbol{R}}$ (line 12) For the pivot node in m, it generates the next best match m\u2019 which is inserted into ${\\mathbf{}}P$ (lines 13-14). Specifically, SqMat retrieves every $v_{\\boldsymbol{p}}$ 's leaf match lists and selects the one with the smallest difference by subtracting the largest score in the list. This phase repeatedly until |R|=k. Finally SqMat outputs ${\\boldsymbol{R}}$ as the answer set (line 15)"
+          "content": "Phase 3.SqMat maintains the priority queue ${\\boldsymbol{P}}.$ SqMat pops up the best match m from I ${\\boldsymbol{P}},$ and inserts it into an answer set ${\\boldsymbol{R}}$ (line 12) For the pivot node in m, it generates the next best match m\u2019 which is inserted into ${\\mathbf{}}P$ (lines 13-14). Specifically, SqMat retrieves every $v_{{\\mathcal{X}}}\\,\\!\\rho$ 's leaf match lists and selects the one with the smallest difference by subtracting the largest score in the list. This phase repeatedly until |R|=k. Finally SqMat outputs ${\\boldsymbol{R}}$ as the answer set (line 15)"
         },
         "11": {
           "position": [
@@ -569,7 +569,7 @@
             1556.5346116425085,
             573.5978832960759
           ],
-          "content": "Phase 2 starts. Among the top-1 star matches at every UA,SMat selects the best three star matches to form a pseudo top-3 star matches given in Fig.5(c). SMat then sorts the leaf matches for each pivot in a descending list. To form the list, SMat needs to scan the neighbors (denoted by $X_{n b r})$ of pivot matches which are not in $V_{l}^{h}.$ For example, in Fig.5(d), among $A_{1}$ 's neighbors SMat A1\nfinds its neighbor Bnbr = 0.85 is larger than $|B_{3}=1$ 0.80, and thu inserts $B_{n b r}$ to its descending list. Similarly, SMat also computes Cnbr = 0.89 for Az and $B_{n b r}$ = 0.70 for A3. At the final of Phase 2, pivot matches $A_{1},A_{2}$ and $A_{3}$ hold the descending lists for leaf matches as given in Fig.5(d)\n"
+          "content": "Phase 2 starts. Among the top-1 star matches at every UA,SMat selects the best three star matches to form a pseudo top-3 star matches given in Fig.5(c). SMat then sorts the leaf matches for each pivot in a descending list. To form the list, SMat needs to scan the neighbors (denoted by $X_{n b r}\\quad$ of pivot matches which are not in $V_{l}^{h}.$ For example, in Fig.5(d), among $A_{1}$ 's neighbors SMat A1\nfinds its neighbor Bnbr = 0.85 is larger than $|B_{3}=1$ 0.80, and thu inserts $B_{n b r}$ to its descending list. Similarly, SMat also computes Cnbr = 0.89 for Az and $B_{n b r}$ = 0.70 for A3. At the final of Phase 2, pivot matches $A_{1},A_{2}$ and $A_{3}$ hold the descending lists for leaf matches as given in Fig.5(d)\n"
         },
         "15": {
           "position": [
@@ -578,7 +578,7 @@
             1557.9372457011473,
             756.321647992085
           ],
-          "content": "Fig. 5(e) shows the procedure of Phase 3.SMat first pops from priority queue ${\\boldsymbol{P}}$ the best match A2BiC inserted into R, which is the top-1 match pivoted at A2.SMat then generates the next best match A2B1Cmbr pivoted at Az and adds it into P. Following the same rule SqMat terminates until $\\boldsymbol{P}$ pops up A1B2Cz and |R| = 3. Finally the \u4e0a\nanswer is returned as $R=\\{A_{2}B_{1}C_{1},A_{2}B_{1}C_{n b r},A_{1}B_{2}C_{2}\\}.$ \u53e3"
+          "content": "Fig. 5(e) shows the procedure of Phase 3.SMat first pops from priority queue $\\boldsymbol{P}$ the best match A2BiC inserted into R, which is the top-1 match pivoted at A2.SMat then generates the next best match A2B1Cmbr pivoted at Az and adds it into P. Following the same rule SqMat terminates until $\\boldsymbol{P}$ pops up A1B2Cz and |R| = 3. Finally the \u4e0a\nanswer is returned as $R=\\{A_{2}B_{1}C_{1},A_{2}B_{1}C_{n b r},A_{1}B_{2}C_{2}\\}.$ \u53e3"
         }
       },
       "table": {
@@ -589,7 +589,7 @@
             1541.525795782293,
             1334.1667235443972
           ],
-          "content": ",dlly SUl uCLuIdl VE LOL ${\\mathfrak{I}}_{\\mathbb{N}},$ inte ger ${\\boldsymbol{\\kappa}}$ \nDutput: top-k match set R\n1. initialize set $R=\\varnothing_{\\mathrm{i}}$ \n2. initialize priority queue $P=\\varnothing;$ \n3. identify the pivot matches $V_{\\boldsymbol{P}}=\\{v_{\\boldsymbol{P}}\\}$ and every leaf node's matches $V_{l}=\\{v_{l}\\}$ in G;\n4. invoke EJud to judge whether the edge $(v_{P},\\,v_{l})$ should exist by Sg(Vp) and Sg(v1)\uff1b\n5. add $(v_{P},\\,v_{l})$ to ${\\boldsymbol{G}}$ if EJud returns true;\n6. invoke NMat to find the top- $\\ \\boldsymbol{h}$ descending leaf matches $V_{l}^{h}=\\{v_{l}^{h}\\}$ in G by calculating the similarity function $\\delta(\\cdot)$ between $\\mathbf{C}_{s\\mathbf{q}}$ and $\\mathbf{C_{g}}$ \n7. every $v_{P}\\,$ scans its neighbors in G to identify its leaf\nmatches $V_{l}^{p}{}_{i}$ \n8. every $v_{P}\\,$ determines the top-l star match pivoted at ${\\mathcal{O}}_{P}\\colon$ 9. add the best  $\\boldsymbol{k}$ star matches from all the top-1 matches to $\\textstyle P;$ 11. while sort the leaf matches in $V_{l}^{h}\\cup V_{l}^{p}$ for these $\\boldsymbol{k}$ star matches 10.\n $(|R|<k)$ do\n12. pop the best match m (pivoted at $v_{P}\\rangle$ ,) from $\\textstyle P_{\\mathrm{i}}$ \n $R=R\\cup m;$ \n13. generate the next best match ${\\mathfrak{m}}^{\\prime}$ pivoted at $v_{p};$ \n14. insert $m^{\\prime}$ to ${\\mathbf{}}P$ \uff1b\n15. return ${\\boldsymbol{R}}$ as $s q(G,k);$ \n"
+          "content": ",dlly SUl uCLuIdl VE LOL ${\\mathfrak{I}}_{\\mathbb{N}},$ inte ger ${\\bar{\\boldsymbol{K}}}$ \nDutput: top-k match set R\n1. initialize set $R=\\varnothing_{\\mathrm{i}}$ \n2. initialize priority queue $P=\\varnothing;$ \n3. identify the pivot matches $V_{\\cal P}=\\{v_{\\cal P}\\}$ and every leaf node's matches $V_{l}=\\{v_{l}\\}$ in G;\n4. invoke EJud to judge whether the edge $(v_{P},\\,v_{l})$ should exist by Sg(Vp) and Sg(v1)\uff1b\n5. add $(v_{P},\\,v_{l})$ to ${\\boldsymbol{G}}$ if EJud returns true;\n6. invoke NMat to find the top- $\\ \\boldsymbol{h}$ descending leaf matches $V_{l}^{h}=\\{v_{l}^{h}\\}$ in G by calculating the similarity function $\\delta(\\cdot)$ between $\\mathbf{C}_{s\\mathbf{q}}$ and $\\mathbf{C_{g}}$ \n7. every $v_{P}\\,$ scans its neighbors in G to identify its leaf\nmatches $V_{l}^{p}{}_{i}$ \n8. every $v_{P}\\,$ determines the top-l star match pivoted at ${\\mathcal{O}}_{P}\\colon$ 9. add the best  $\\boldsymbol{k}$ star matches from all the top-1 matches to $\\textstyle P;$ 11. while sort the leaf matches in $V_{l}^{h}\\cup V_{l}^{p}$ for these $\\boldsymbol{k}$ star matches 10.\n $(|R|<k)$ do\n12. pop the best match m (pivoted at $v_{P}\\rangle$ ,) from $\\textstyle P_{\\mathrm{i}}$ \n $R=R\\cup m;$ \n13. generate the next best match $m^{\\prime}$ pivoted at $v_{p};$ \n14. insert $m^{\\prime}$ to ${\\mathbf{}}P$ \uff1b\n15. return ${\\boldsymbol{R}}$ as $s q(G,k);$ \n"
         }
       },
       "figure": [
@@ -599,7 +599,7 @@
           837.128739757633,
           1584.8497605070543,
           3,
-          "pivot A410.99 A, 0.93 A3 0.90 . A,0.10\nBlB,0.96 B,0.88 ${\\boldsymbol{B}}_{\\mathrm{i}}$ 0.80 $B_{4}\\,0.75$ \nB $\\left|C\\right|C_{1}\\ 0.95 |C_{2}\\ 0.90 |C_{3}\\ 0.86\\left|\\,C_{4}\\ 0.81\\right|$ \n(a) Star ${\\mathfrak{s}}q$ (b) Matches of pivot and leaf nodes\n $D\\!\\!\\!\\!/$ A1 0.99 A, 0.93 A: 0.90 ApBiC 2.84 B 0.88|C 0.90 B,0.96 |C 0.95 $\\left[{\\frac{G_{1}\\ 0.96}{\\left[C_{2}\\ 0.90\\right]}}\\right]$  $A;B_{1}C_{2}\\;2.76$ B: 0.80 $\\left\\lceil{\\frac{G_{\\mathrm{nar}}\\ 0.85 \\rceil C_{3}\\ 0.86}}\\right\\vert$  $|\\beta_{3}\\,0.80$  $\\overline{{C_{\\mathrm{nh}}(\\log\\vartheta)}}\\Big|$ B $\\frac{}{1-{\\overline{{0.75}}}}$  ${\\boldsymbol{C}}_{3}$ 0.86 $A_{1}B_{2}C_{2}\\ 2.77$ C4 0.81 $\\overline{{B_{4}\\,0.75}}$  $\\overline{{C_{4}\\ 0.81}}$  $\\left|{\\overline{{B_{\\mathrm{nar}\\,0.70}}}}\\right|C_{4}\\,0.81 |$ (c) Pseudo top-k set $\\boldsymbol{\\mathit{P}}$ (d) Leaf match lists of pivot match\n $D\\!\\!\\!\\!/$ R P R ${\\boldsymbol{D}}$  ${\\bar{\\boldsymbol{R}}}$  $d_{2}B_{1}C_{\\mathrm{nhr}}\\ 2.78$  $A_{2}B_{1}C_{1}$ 2.84 $A_{1}B_{2}C_{2}$ 2.77 $A_{2}B_{1}C_{1}$ 2.84 $4_{3}B_{1}C_{2}$ 2.76 $A_{2}B_{1}C_{1}$ 2.84 AuBzC2.77 \u5341 AsBiC 2.76 $A_{2}B_{1}C_{\\mathrm{nht}}$ 2.78 $A_{1}B_{\\mathrm{ns}}C_{2}$  2.74 $A_{2}B_{1}C_{\\mathrm{nh}}\\ 2.78$  $A_{i}B_{1}C_{2}$ 2.76 ApBiC\u30022.70 $4_{2}B_{1}C_{4}$ 2.70 AiB,C 2.77 (e) Procedure of searching top-3 matches\n"
+          "pivot A410.99 A, 0.93 A3 0.90 . A,0.10\nBlB,0.96 B,0.88 ${\\boldsymbol{B}}_{\\mathrm{i}}$ 0.80 $B_{4}\\,0.75$ \nB $\\left|C\\right|C_{1}\\ 0.95 |C_{2}\\ 0.90 |C_{3}\\,0.86\\left|\\,C_{4}\\,0.81\\right|$ \n(a) Star ${\\mathfrak{s}}q$ (b) Matches of pivot and leaf nodes\n $D\\!\\!\\!\\!/$ A1 0.99 A, 0.93 A: 0.90 ApBiC 2.84 B 0.88|C 0.90 B,0.96 |C 0.95 $\\left[{\\frac{B_{1}\\,0.96}{\\left[C_{2}\\,0.90\\right]}}\\right]$  $A;B_{1}C_{2}\\;2.76$ B: 0.80 $ \\lceil{\\frac{G_{\\mathrm{nar}}\\ 0.85 \\rceil C_{3}\\ 0.86}} \\rfloor$  $|B_{3}\\,0.80$  $\\widehat{C_{\\mathrm{na}}(0.89]}$ B $\\frac{}{1-{\\overline{{0.75}}}}$  ${\\boldsymbol{C}}_{3}$ 0.86 $A_{1}B_{2}C_{2}\\ 2.77$ C4 0.81 $\\overline{{B_{4}\\,0.75}}$  $\\overline{{C_{4}\\ 0.81}}$  $\\left|{\\overline{{B_{\\mathrm{nar}\\,0.70}}}}\\right|C_{4}\\,0.81 |$ (c) Pseudo top-k set ${\\mathbf{}}P$ (d) Leaf match lists of pivot match\n $D\\!\\!\\!\\!/$ R P R $D\\!\\!\\!\\!/$  ${\\bar{\\boldsymbol{R}}}$  $d_{2}B_{1}C_{\\mathrm{nhr}}\\ 2.78$  $A_{2}B_{1}C_{1}$ 2.84 $A_{1}B_{2}C_{2}$ 2.77 $A_{2}B_{1}C_{1}$ 2.84 $4_{3}B_{1}C_{2}$ 2.76 $A_{2}B_{1}C_{1}$ 2.84 AuBzC2.77 \u5341 AsBiC 2.76 $A_{2}B_{1}C_{\\mathrm{nht}}$ 2.78 $A_{1}B_{\\mathrm{ns}}C_{2}$  2.74 $d_{2}B_{1}C_{\\mathrm{nhr}}\\ 2.78$  $A;B_{1}C_{2}$ 2.76 ApBiC\u30022.70 $4_{2}B_{1}C_{4}$ 2.70 AiB,C 2.77 (e) Procedure of searching top-3 matches\n"
         ]
       ]
     },
@@ -640,7 +640,7 @@
               1558.712030787681,
               1325.83607346308
             ],
-            "content": "Nearest Neighbors Search (NNS). Given a query vector $\\boldsymbol{\\mathit{I}}$ and a finite set of vectors $\\boldsymbol{\\mathsf{S}}$ in the Euclidean space $E^{d}$ with dimension d, NNS obtains ${\\boldsymbol{q}}^{\\prime}$ s $h.$ nearest neighbors (vectors) R by evaluating $\\delta(x,q),$ wherex\u2208 R is described as follows\n"
+            "content": "Nearest Neighbors Search (NNS). Given a query vector $\\boldsymbol{\\mathit{I}}$ and a finite set of vectors $\\boldsymbol{\\mathsf{S}}$ in the Euclidean space $E^{d}$ with dimension d, NNS obtains ${\\boldsymbol{q}}^{\\prime}$ s $h\\cdot$ nearest neighbors (vectors) R by evaluating $\\delta(x,q),$ wherex\u2208 R is described as follows\n"
           },
           "4": {
             "position": [
@@ -667,7 +667,7 @@
               1558.1913547306294,
               1970.3024315147868
             ],
-            "content": "An HNNG $\\begin{array}{r}{I_{G}}\\end{array}$ can be constructed as follows[12|: every vector in $\\boldsymbol{\\mathsf{S}}$ is connected to its $\\boldsymbol{\\mathit{h}}$ nearest vectors to form $I_{G}$ in the Euclidean h\nspace $E^{d}.$ A query process on $\\begin{array}{r}{I_{G}}\\end{array}$ is executed as follows.\n"
+            "content": "An HNNG $\\begin{array}{r}{I_{G}}\\end{array}$ can be constructed as follows[12|: every vector in $\\boldsymbol{\\mathsf{S}}$ is connected to its $\\ \\boldsymbol{h}$ nearest vectors to form $\\begin{array}{r}{I_{G}}\\end{array}$ in the Euclidean h\nspace $E^{d}.$ A query process on $\\begin{array}{r}{I_{G}}\\end{array}$ is executed as follows.\n"
           },
           "7": {
             "position": [
@@ -685,7 +685,7 @@
               822.9838775319058,
               831.6026439785169
             ],
-            "content": "Assume that graph in Fig. 6 is a built HNNG $\\,I_{G}.$ For a given query node (vector\uff09 $\\boldsymbol{\\mathit{I}}$ in I $I_{G},$ \uff0cNMat first randomly selects a node $~{\\mathcal{P}}$  ${\\boldsymbol{\\rho}}^{\\prime}$ \nas the entry node, follows its out-edges to reach p's neighbors and chooses one to proceed following a principle that minimizes ${\\boldsymbol{q}}.$ the distance to q. After that a new iteration starts from the chosen node. Colored arrows in Fig 6 show the complete query procedure from the entry node $~{\\mathcal{P}}~~~~~~~{}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$ to the query g's nearest neighbor Ci, which needs 5 iterations and 13 distance calculations\n"
+            "content": "Assume that graph in Fig. 6 is a built HNNG $\\,I_{G}.$ For a given query node (vector\uff09 $\\boldsymbol{\\mathit{I}}$ in I $I_{G},$ \uff0cNMat first randomly selects a node $\\bar{P}$  ${\\boldsymbol{\\rho}}^{\\prime}$ \nas the entry node, follows its out-edges to reach p's neighbors and chooses one to proceed following a principle that minimizes ${\\boldsymbol{q}}.$ the distance to q. After that a new iteration starts from the chosen node. Colored arrows in Fig 6 show the complete query procedure from the entry node $\\bar{P}$ to the query g's nearest neighbor Ci, which needs 5 iterations and 13 distance calculations\n"
           },
           "9": {
             "position": [
@@ -712,7 +712,7 @@
               833.3386071614157,
               1643.5917326333602
             ],
-            "content": "NMat performs the edge deletion as follows. (1) For any node $\\boldsymbol{u}$ in $I_{G},$ NMat first sorts u's neighbors {v} in an ascending or der of the distance from u to . Denote by $E_{u}$ the edge set ${\\cal E}_{u}\\,=\\,$ {(u,0)|v is a neighbor of ${\\boldsymbol{u}}$ in $\\displaystyle I_{G}\\backslash$ . With the sorted $E_{u},$ NMat chooses the shortest edge $E_{u}$ [0] and marks it as checked.(2) NMat then judges whether there exists an unchecked edge $E_{u}$ L]j > 0) in $E_{u}$ whose angle formed with v is less than a given \u03b1.If such EuLi exists, the longer edge will be deleted. This deletion process is exe- cuted for all the remaining unchecked edges in $E_{u}.$ (3) Denote by $E_{u}^{\\prime}$ the the undeleted edge set in $E_{u}$ after the above process. The next iteration starts with the shortest edge in $E_{u}^{\\prime}.$ NMat finishes al H\u2032\nthe iterations when all non-deleted edges have been checked"
+            "content": "NMat performs the edge deletion as follows. (1) For any node ${\\boldsymbol{u}}$ in $I_{G},$ NMat first sorts u's neighbors {v} in an ascending or der of the distance from u to . Denote by $E_{u}$ the edge set ${\\cal E}_{u}\\,=\\,$ {(u,0)|v is a neighbor of $\\boldsymbol{u}$ in $\\displaystyle I_{G}\\backslash\\ \\!\\lbrack$ . With the sorted $E_{u},$ NMat chooses the shortest edge $E_{u}$ [0] and marks it as checked.(2) NMat then judges whether there exists an unchecked edge $E_{u}$ L]j > 0) in $E_{u}$ whose angle formed with v is less than a given \u03b1.If such EuLi exists, the longer edge will be deleted. This deletion process is exe- cuted for all the remaining unchecked edges in $E_{u}.$ (3) Denote by $E_{u}^{\\prime}$ the the undeleted edge set in $E_{u}$ after the above process. The next iteration starts with the shortest edge in $E_{u}^{\\prime}.$ NMat finishes al H\u2032\nthe iterations when all non-deleted edges have been checked"
           },
           "12": {
             "position": [
@@ -721,7 +721,7 @@
               824.4265307761817,
               1798.0769727803179
             ],
-            "content": "For example, in Fig 6, node ${\\boldsymbol{\\rho}}^{\\prime}$ s neighbors are unevenly distributed in directions. Assuming the angle formed by Pi\uff0cp, and ${\\boldsymbol{\\mathit{P}}}2$ is larger than \u03b1, the longer edge (p,Pi) will be removed. As a result, the cost of finding g's nearest neighbor will be reduced to 4 search iterations and 10 distance calculations\n"
+            "content": "For example, in Fig 6, node ${\\boldsymbol{\\rho}}^{\\prime}$ s neighbors are unevenly distributed in directions. Assuming the angle formed by Pi\uff0cp, and $\\ D_{\\mathrm{in}}^{2}$ is larger than \u03b1, the longer edge (p,Pi) will be removed. As a result, the cost of finding g's nearest neighbor will be reduced to 4 search iterations and 10 distance calculations\n"
           },
           "13": {
             "position": [
@@ -730,7 +730,7 @@
               823.1834614875669,
               1948.8044615744216
             ],
-            "content": "After the edge deletion process, the connectivity of $\\begin{array}{r}{I_{G}}\\end{array}$ C may be destroyed. To still guarantee the connectivity of $\\displaystyle I_{G},$ NMat does the following:(1) NMat first detects the strongly connected components (SCCs) of $I_{G}$ after the edge deletion process. (2\uff09NMat finds out the node nearest to the geometric center of SCC in the embedding"
+            "content": "After the edge deletion process, the connectivity of $I_{G}$ C may be destroyed. To still guarantee the connectivity of $\\displaystyle I_{G},$ NMat does the following:(1) NMat first detects the strongly connected components (SCCs) of $I_{G}$ after the edge deletion process. (2\uff09NMat finds out the node nearest to the geometric center of SCC in the embedding"
           },
           "14": {
             "position": [
@@ -749,7 +749,7 @@
             754.3740982567269,
             533.8428528951748,
             4,
-            " $\\textstyle\\mid^{3\\sharp}$ checked after nearest\niteration\n ${\\mathcal{P}}_{1}$ 99 ${\\boldsymbol{C}}_{\\boldsymbol{1}}$  ${\\boldsymbol{C}}_{2}$  $||^{\\alpha}$ iteration Query\nChecked after\n $\\mathbf{\\mathcal{D}}^{\\mathrm{nd}}$ iteration ${\\boldsymbol{p}}.$ Entry checked aftei ${\\boldsymbol{P}}{\\boldsymbol{+}}$  $\\stackrel{i}{,}\\sum^{\\mathrm{red}}$ iteration $q_{j^{\\prime}}$  $D\\!\\!\\!\\!/$  $\\mathbf{i}\\!\\!\\!\\!/_{1}\\!\\!\\!\\!/\\mathbf{n}\\!\\!\\!/\\mathrm{d}$ iteration $A\\!\\stackrel{\\mathrm{fh}}{\\mathrm{ih}}$ iteration\n ${\\boldsymbol{C}}_{8}$  ${\\mathbf{J}}^{\\mathrm{ru}}$ checked after $\\mathbf{\\Sigma}_{1}^{i}A_{\\mathrm{}}^{\\mathrm{th}}$ iteration iteration\n $\\lnot_{\\mathrm{y}}$  ${\\boldsymbol{C}}_{3}$ \" iteration"
+            " $\\textstyle\\mid^{3\\sharp}$ checked after nearest\niteration\n ${\\mathcal{P}}_{1}$ 99 ${\\boldsymbol{C}}_{\\boldsymbol{1}}$  ${\\boldsymbol{C}}_{2}$  $||^{\\alpha}$ iteration Query\nChecked after\n $\\mathbf{\\mathcal{D}}^{\\mathrm{nd}}$ iteration ${\\boldsymbol{p}}.$ Entry checked aftei ${\\boldsymbol{P}}{\\boldsymbol{+}}$  $\\stackrel{i}{,}\\sum^{\\mathrm{red}}$ iteration $q_{j^{\\prime}}$  $D\\!\\!\\!\\!/$  $\\mathbf{i}\\!\\!\\!\\!/_{1}\\!\\!\\!\\!/\\mathbf{n}\\!\\!\\!/\\mathrm{d}$ iteration $d^{\\mathrm{th}}$ iteration\n ${\\boldsymbol{C}}_{8}$  ${\\mathbf{J}}^{\\mathrm{ru}}$ checked after $\\mathbf{\\Sigma}_{1}^{i}A_{}^{\\mathrm{th}}$ iteration iteration\n $\\lnot\\lnot\\lnot$  ${\\boldsymbol{C}}_{3}$ \" iteration"
           ]
         ]
       }
@@ -836,7 +836,7 @@
               1556.7803584540964,
               1562.9392234403126
             ],
-            "content": "Specifically, EJud first sets an one-hot vector pu\u2208{0,1}1X for node ${\\boldsymbol{u}}$ and an adjacent matrix M \u2208{0.1}|VIxiVl for label ${\\mathit{l}}_{}^{}$ as their symbolic representations, where ${\\Lambda_{l}^{(u,v)}}_{z}$ = 1 if $l(u,v)\\in G,$ otherwise ${\\bf M}_{l}^{(u,v)}$ = 0. EJud then yields a multi-hot vector with matrix multiplications (Equ.(3)) to represent the nodes linked with u via label ${\\mathit{l}}.$ \n"
+            "content": "Specifically, EJud first sets an one-hot vector pu\u2208{0,1}1X for node ${\\boldsymbol{u}}$ and an adjacent matrix M \u2208{0.1}|VIxiVl for label ${\\mathit{l}}_{}^{}$ as their symbolic representations, where ${\\Lambda_{l}^{(u,v)}}_{z}$ = 1 if $l(u,v)\\in G,$ otherwise ${\\bf M}_{l}^{(u,v)}$ = 0. EJud then yields a multi-hot vector with matrix multiplications (Equ.(3)) to represent the nodes linked with u via label ${\\mathit{l}}_{\\cdot}$ \n"
           },
           "9": {
             "position": [
@@ -863,7 +863,7 @@
               1547.073188738871,
               1971.5309013268084
             ],
-            "content": "ere $\\mathfrak{P}_{u}^{\\dagger}$ is the corresponding probability of node $\\dot{\\boldsymbol{l}}$ in $\\mathbf{p}_{u}.$ Therefore node ${\\boldsymbol{u}},$ the yielded new structural vector $\\mathrm{S}_{u}^{\\mathrm{P}}$ gathered mor"
+            "content": "ere $\\mathfrak{P}_{u}^{\\dagger}$ is the corresponding probability of node $\\hat{\\boldsymbol{l}}$ in $\\mathbf{p}_{u}.$ Therefore node ${\\boldsymbol{u}},$ the yielded new structural vector $\\mathrm{S}_{u}^{\\mathrm{P}}$ gathered mor"
           },
           "12": {
             "position": [
@@ -899,7 +899,7 @@
               830.1439839395287,
               522.3746029622971
             ],
-            "content": "A simple way for entanglement is to concatenate $\\mathbf{C}_{u}$ and $\\mathbf{S}_{u}^{\\mathrm{P}}.$ Con- sidering that the impacts on $\\mathbf{S}_{l}$ from $\\mathbf{C}_{u}$ and $\\mathbf{C}_{v}$ to be distinct, E]ud first introduces an MLP-based attention mechanism to calculate the relevance between $\\mathbf{C}_{u}$ and Sy given by Equ.(5)\n"
+            "content": "A simple way for entanglement is to concatenate $\\mathbf{C}_{u}$ and ${\\mathfrak{S}}_{u}^{\\mathrm{P}}.$ Con- sidering that the impacts on $\\mathbf{S}_{l}$ from $\\mathbf{C}_{u}$ and $\\mathbf{C}_{v}$ to be distinct, E]ud first introduces an MLP-based attention mechanism to calculate the relevance between $\\mathbf{C}_{u}$ and Sy given by Equ.(5)\n"
           },
           "16": {
             "position": [
@@ -1001,7 +1001,7 @@
             764.6120128219785,
             1192.7376048345088,
             5,
-            " ${\\vec{\\mathbf{C}}}_{u}^{*}$  ${\\mathbf{S}}_{u}^{\\textbf{P}}$ \npivot node\nL $\\mathrm{fnrtag}$ \n ${\\mathbf{}}T$  $|{\\underline{{\\mathrm{Concat}}}}|$ \u660c\u4e13\u5341 0ut $\\mathcal{Y}$  $\\overline{{\\mathrm{Entag}}}$ \nleaf node\n $*_{\\cdot\\ldots,\\ldots}^{}$  $\\mathbf{S}_{\\nu}^{\\iota}$ \n"
+            " ${\\check{C}}_{u}^{*}$  ${\\mathbf{S}}_{u}^{\\textbf{P}}$ \npivot node\nL $\\mathrm{fnrtag}$ \n ${\\mathbf{}}T$  $|{\\underline{{\\mathrm{Concat}}}}|$ \u660c\u4e13\u5341 0ut $\\mathcal{Y}$  $\\overline{{\\mathrm{Entag}}}$ \nleaf node\n $*_{i_{\\cdots\\cdots\\ldots}}$  ${\\mathbf{S}}_{\\nu}^{\\ \\dagger}$ \n"
           ]
         ]
       }
@@ -1017,7 +1017,7 @@
             826.0163761211481,
             1783.7784502572283
           ],
-          "content": "A graph pattern $\\textstyle{\\mathcal{Q}}$ can be decomposed to a set of star-shaped pattern \uff08\uff09\nSQ. Top-k answers to Q can be assembled by collecting the top matches of each star in SQ, followed by a multi-way join procesS"
+          "content": "A graph pattern ${\\boldsymbol{Q}}$ can be decomposed to a set of star-shaped pattern \uff08\uff09\nSQ. Top-k answers to Q can be assembled by collecting the top matches of each star in SQ, followed by a multi-way join procesS"
         }
       }
     },
@@ -1040,7 +1040,7 @@
               1562.967887723359,
               479.1063738135584
             ],
-            "content": "The procedure of star join \uff08JoinK) first iteratively fetches $\\boldsymbol{k}$ matches for each star and joins them with the existing matches for the other stars. JoinK then adds the join results to the priority queue ${\\boldsymbol{R}}$ and keeps track of lower bound LB as the ${\\hat{\\cal K}}.$ th match in ${\\boldsymbol{R}}.$ If upper bound is smaller than the upper bound, JoinK removes sq from SQ. When SQ=0, JoinK returns the first k results in ${\\boldsymbol{R}}$ as the final answers. It can be seen that the efficiency of JoinK relies on the upper bound for each star introduced as follows\n"
+            "content": "The procedure of star join \uff08JoinK) first iteratively fetches $\\boldsymbol{k}$ matches for each star and joins them with the existing matches for the other stars. JoinK then adds the join results to the priority queue ${\\boldsymbol{R}}$ and keeps track of lower bound LB as the ${\\hat{I}}_{\\mathrm{{C}}},$ th match in ${\\boldsymbol{R}}.$ If upper bound is smaller than the upper bound, JoinK removes sq from SQ. When SQ=0, JoinK returns the first k results in ${\\boldsymbol{R}}$ as the final answers. It can be seen that the efficiency of JoinK relies on the upper bound for each star introduced as follows\n"
           },
           "2": {
             "position": [
@@ -1067,7 +1067,7 @@
               1563.033761521465,
               996.6721275844536
             ],
-            "content": "Consider two matches lists $L_{\\mathrm{1}}$ and $L_{2}.$ Regarding a list $L_{i}$ of size $n_{i}$ (i=1 or 2), denote $h_{i j}$ as the jth ranked match in $L_{i}.$ Then the upper bound can be defined as\n"
+            "content": "Consider two matches lists $L_{\\mathrm{1}}$ and $L_{2}.$ Regarding a list $L_{i}$ of size ${\\mathfrak{n}}_{i}$ (i=1 or 2), denote $h_{i j}$ as the jth ranked match in $L_{i}.$ Then the upper bound can be defined as\n"
           },
           "5": {
             "position": [
@@ -1122,7 +1122,7 @@
             1481.4721013305618,
             1618.8278020969688,
             5,
-            "\n$$\n\\left.\\widehat{G} \\langle^{\\widehat{A}} \\langle_{-}^{\\widehat{A}}\\right|_{\\begin{array}{c}{\\qquad}\\\\ {\\qquad}\\\\ {\\qquad}\\\\ {\\qquad}\\\\ {\\qquad}\\end{array}}=\\ \\left(\\widehat{B}\\right)\\frac{1}{\\delta\\qquad}^{\\widehat{A}\\bigcap}_{s q_{2}}^{\\widehat{A}}\\sum_{\\widehat{C}} \\rangle_{\\vphantom{k}}\n$$\n(a) Query decomposition\nmatches of ${\\mathfrak{s q}}_{1}$ matches of ${\\mathfrak{s q}}_{2}$ \n ${\\bar{B}}_{1}$ 0.45 $C_{1}\\ 0.45$ join A 0.9 B, 0.45 C 0.45 B2 0.45 $C_{2} \\lbrack .0.40 \\rbrack$ 420.8 B,0.45 C, 0.45 $\\left|B_{3}\\,0.40\\,\\,\\,C_{3}\\,0.40\\right.$ join 43 0.8 B, 0.40 C 0.40 ${\\boldsymbol{B}}_{4}$ 0.30 $C_{s\\;0.20}|$ 4 0.7 ${\\boldsymbol{B}}_{3}$ 0.40 C4 0.30 (b) Star join\n"
+            "\n$$\n\\left.\\widehat{G} \\langle\\frac{\\sqrt{\\left.\\cal{A}\\right.}}{\\theta}\\right._{G}\\;=\\;\\left.\\widehat{\\left(\\hat{\\cal{B}}\\right)\\frac{\\sqrt{\\ }}{\\delta\\mathcal{B}\\rightarrow\\left.\\frac{1}{\\delta\\right.}}\\frac{\\sqrt{\\cal{A}}}{\\delta .}_{\\scriptscriptstyle{B q_{2}}} . .\n$$\n(a) Query decomposition\nmatches of ${\\mathfrak{s q}}_{1}$ matches of ${\\mathfrak{s}}q_{2}$ \n ${\\bar{B}}_{1}$ 0.45 $C_{1}\\ 0.45$ join A 0.9 B, 0.45 C 0.45 B2 0.45 $C_{2}\\left.0.40\\right|$ 420.8 B,0.45 C, 0.45 $\\left|B_{3}\\,0.40\\,\\,\\,C_{3}\\,0.40\\right.$ join 43 0.8 B, 0.40 C 0.40 ${\\boldsymbol{B}}_{4}$ 0.30 $C_{s\\;0.20}|$ 4 0.7 ${\\boldsymbol{B}}_{3}$ 0.40 C4 0.30 (b) Star join\n"
           ]
         ]
       }
@@ -1155,7 +1155,7 @@
               826.298558310704,
               1186.5106610503597
             ],
-            "content": "Achieve observation 1. To achieve observation 1,we have to uncover the following problem: Let Q be a graph pattern ${\\mathfrak{s Q}}=$ {sq1, \u2026\u2026, 9m} be a set of stars such that any edge of ${\\boldsymbol{Q}}$ belongs to one and only one sqi \u2208 SQ. We call SQ a star cover of Q. The problem is to find the minimum star cover of Q. It is not difficult to prove that finding the minimum star cover problem is polynomia equivalent to the minimum node cover problem which is NP-hard As a result, our problem is an NP-hard problem\n"
+            "content": "Achieve observation 1. To achieve observation 1,we have to uncover the following problem: Let Q be a graph pattern ${\\mathfrak{s Q}}=$ {sq1, \u2026\u2026, 9m} be a set of stars such that any edge of ${\\cal Q}\\,$ belongs to one and only one sqi \u2208 SQ. We call SQ a star cover of Q. The problem is to find the minimum star cover of Q. It is not difficult to prove that finding the minimum star cover problem is polynomia equivalent to the minimum node cover problem which is NP-hard As a result, our problem is an NP-hard problem\n"
           },
           "3": {
             "position": [
@@ -1182,7 +1182,7 @@
               827.3483579714556,
               1760.957848520343
             ],
-            "content": "node $a\\in Q$ Achieve observation 2. DecQ calculates a selectivity $f(a)$ of a as follows: DecQ constructs an index $\\begin{array}{l}{I_{a}}\\end{array}$ for each node a of G. Given a threshold $y,\\,I_{a}$ maintains a set of nodes ${\\boldsymbol{b}}$ such that $\\delta(a,b)\\leq y,$ i.e., $I_{a}=\\{b|\\delta(a,b)\\leq\\gamma,b\\in G\\}.$ la is compressed and stored in a hash table. DecQ sorts ${\\mathit{I}}_{a}$ in a decreasing order of $\\delta(a,b)$ and then obtains w decreasing similarities $\\delta_{1},\\ldots,\\delta_{w}.$ DecQ then defines $f(a)=w/(\\delta_{w}-\\delta_{1}).$ Intuitively, $(\\delta_{w}-\\delta_{1})/$ w measure the average score decrement. Therefore, the larger $f(a)$ is, the larger the score decrement is. To this end, in each step, DecQ only picks an edge $(u,v)$ with the largest $f(u)+f(v).$ \n"
+            "content": "node $a\\in Q$ Achieve observation 2. DecQ calculates a selectivity $f(a)$ of a as follows: DecQ constructs an index $\\begin{array}{l}{I_{a}}\\end{array}$ for each node a of G. Given a threshold $y,\\,I_{a}$ maintains a set of nodes ${\\boldsymbol{b}}$ such that $\\delta(a,b)\\leq\\,y,$ i.e., $I_{a}=\\{b|\\delta(a,b)\\leq\\gamma,b\\in G\\}.$ la is compressed and stored in a hash table. DecQ sorts $\\begin{array}{l}{I_{a}}\\end{array}$ in a decreasing order of $\\delta(a,b)$ and then obtains w decreasing similarities $\\delta_{1},\\ldots,\\delta_{w}.$ DecQ then defines $f(a)=w/(\\delta_{w}-\\delta_{1}).$ Intuitively, $(\\delta_{w}-\\delta_{1})/$ w measure the average score decrement. Therefore, the larger $f(a)$ is, the larger the score decrement is. To this end, in each step, DecQ only picks an edge $(u,v)$ with the largest $f(u)+f(v).$ \n"
           },
           "6": {
             "position": [
@@ -1302,7 +1302,7 @@
               829.083006212,
               359.11849286799156
             ],
-            "content": "1024; the learning rate is set to be 10-2; and the training batch size is 64, while the negative sample size is 128. The $\\beta$ in the joining algorithm and the search depth $\\ \\ \\!\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad(\\qquad=\\qquad{\\qquad(\\qquad{\\qquad(\\qquad{\\qquad(\\qquad\\qquad(\\qquad{\\qquad(\\qquad{\\qquad(\\frac{1}{\\sqrt{1}}\\sqrt{\\cdots_{\\qquad(\\frac{1}{\\sqrt{\\sqrt{1}}}\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\mathit{h}}}}}}}}}\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\mathit{h}}}}}}}\\sqrt{\\frac{\\sqrt{\\sqrt{\\sqrt{\\mathit{h}}}}}}\\sqrt{\\frac{\\sqrt{\\sqrt{\\sqrt{\\frac{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\frac{\\sqrt{\\sqrt{\\frac{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt{\\sqrt}}}}}}}}}}}}}}}}}}}}}}\\frac{\\frac{\\frac{\\sqrt{\\sqrt{\\frac{\\sqrt{\\frac{\\sqrt{\\frac{\\sqrt{\\sqrt{\\frac{\\frac{}}}{\\frac{\\sqrt{\\frac{\\sqrt{\\sqrt{\\frac{\\frac{\\sqrt{\\frac{\\sqrt{\\frac{\\sqrt{\\frac{\\sqrt{\\frac{\\frac{\\sqrt{\\sqrt{\\frac{\\frac{\\frac{\\sqrt{\\sqrt{$ of ANNS will be determined in the experiments\n"
+            "content": "1024; the learning rate is set to be 10-2; and the training batch size is 64, while the negative sample size is 128. The $\\beta$ in the joining algorithm and the search depth $\\boldsymbol{\\mathit{h}}$ of ANNS will be determined in the experiments\n"
           }
         },
         "list": {
@@ -1364,7 +1364,7 @@
               830.3206997891114,
               1329.6835388635534
             ],
-            "content": "1.0X,where $X\\,=\\,{\\sqrt{(|V|/k)}}$ \u00b7k. Fig. 9(b) shows the running time of NSMatch on the three graphs. The result tells us the following NSMatch achieves the best performance at h = 0.6X for all three graphs. $\\boldsymbol{\\mathit{h}}$ determines the trade-off among the neural and symbolic calculations, which is also reflected in the figure. A lager $\\ \\ \\!\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad(\\qquad{\\qquad.$ leads to more neural computations (i.e.,embedding search) and thus fewer symbolic calculations (i.e. graph traversal) and vice versa. We therefore set $h=0.6X$ in the experiments.\n"
+            "content": "1.0X,where $X\\,=\\,{\\sqrt{(|V|/k)}}$ \u00b7k. Fig. 9(b) shows the running time of NSMatch on the three graphs. The result tells us the following NSMatch achieves the best performance at h = 0.6X for all three graphs. $\\ \\ \\!\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad(\\qquad=\\qquad{\\qquad(1\\qquad(1\\qquad\\qquad(1\\sqrt{3}\\qquad\\qquad\\qquad(1\\sqrt{3}\\qquad\\qquad.$ determines the trade-off among the neural and symbolic calculations, which is also reflected in the figure. A lager $\\boldsymbol{\\mathit{h}}$ leads to more neural computations (i.e.,embedding search) and thus fewer symbolic calculations (i.e. graph traversal) and vice versa. We therefore set $h=0.6X$ in the experiments.\n"
           },
           "4": {
             "position": [
@@ -1526,7 +1526,7 @@
             781.1336221622773,
             1615.24326851239,
             7,
-            "E 1000 $\\begin{array}{c}{{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}}\\\\ {{\\qquad}\\end{array}$ \u81ea 1000 \u98dfNSnop $\\mathrm{NSMateh}$ \n $\\mathbb{Z}^{10000}$ \u65e5SubISO A-GraphTA\n100 ${\\mathcal{X}}{\\mathfrak{C}},$ \u81ea 100 10\n10 \u4e0a\n $\\mathbf{\\hat{l}}$ Q2 Q4 $Q{\\mathfrak{G}}$ Q8 Q10 0.1 Q2 $\\mathrm{Q}4$ Q6 Q8 Q10 $\\mathbf{\\tau}(\\mathbf{a})$ Richpedia $(\\mathbf{b})\\cdot\\mathbf{XRGOlSK}$ \n"
+            "E 1000 $\\begin{array}{c}{{}}\\\\ {{}}\\\\ {{\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad}}\\\\ {{}}\\\\ {{-\\sigma^{\\sigma^{\\sigma^{\\sigma^{\\sigma^{\\sigma^{\\sigma^{\\sigma^{\\sigma}}}}}}}\\prod}}\\end{array}$ \u81ea 1000 \u98dfNSnop $\\mathsf{N S M a t e h}$ \n $\\mathbb{Z}^{10000}$ \u65e5SubISO A-GraphTA\n100 ${\\mathcal{X}}{\\mathfrak{Q}},$ \u81ea 100 10\n10 \u4e0a\n $\\mathbf{\\hat{l}}$ Q2 Q4 $Q6$ Q8 Q10 0.1 Q2 $\\mathrm{Q}4$ Q6 Q8 Q10 $\\mathbf{\\tau}(\\mathbf{a})$ Richpedia $(\\mathbf{b})\\cdot\\mathbf{XRGOISK}$ \n"
           ],
           [
             910.8465722339567,
@@ -1534,7 +1534,7 @@
             1514.346710393209,
             454.6337411810833,
             7,
-            "100 \u65e5SubISO A-GraphTA $\\otimes$ NSnop e-NSMatch\n100\n\u53f0\n90 \u65e5 90 \u65e5\n80 80\n $\\textstyle{\\mathfrak{C}}$ \n70 70\n60 60\nQ2 Q4 Q6 Q8 Q10 Q2 Q4 Q6 Q8 Q10 (a) Richpedia (b) YAGO15K\n"
+            "100 \u65e5SubISO A-GraphTA $\\otimes$ NSnop e-NSMatch\n100\n\u53f0\n90 \u65e5 90 \u65e5\n80 80\n $\\sim\\infty$ \n70 70\n60 60\nQ2 Q4 Q6 Q8 Q10 Q2 Q4 Q6 Q8 Q10 (a) Richpedia (b) YAGO15K\n"
           ],
           [
             910.3605396510387,
@@ -1542,7 +1542,7 @@
             1510.013886921402,
             1063.4125812228745,
             7,
-            "\u81ea 1000 \u6bcdSubISO AGraphTA \u98dfNSnop $\\mathbb{Q}$ NSMatch $-\\mathbb{B}^{-7}$ \n10000 $\\underline{{\\widehat{f}}}^{1000}$ \n100\n100 10\n $\\triangle\\otimes$ \n10 1 $\\mathbf{\\mathcal{Q}}$ \n $\\bigstar\\bigstar|\\bigstar|\\bigstar$  $\\hat{\\mathbf{t}}$ 10 50 100 150 0.1 1 $10$ 50 100 150 $\\mathbf{\\tau}(\\mathbf{a})$ Richpedia $(\\mathbf{b})$ YAGO15K\n"
+            "\u81ea 1000 \u6bcdSubISO AGraphTA \u98dfNSnop $\\mathbb{Q}$ NSMatch $-\\mathbb{R}^{-7}$ \n10000 $\\underline{{\\widehat{f}}}^{1000}$ \n100\n100 10\n $\\triangle\\otimes$ \n10 1 $\\mathbf{\\mathcal{Q}}$ \n $\\bigstar\\bigstar|\\bigstar|<$  $\\hat{\\mathbf{t}}$ 10 50 100 150 0.1 1 $10$ 50 100 150 $\\mathbf{\\tau}(\\mathbf{a})$ Richpedia $(\\mathbf{b})$ YAGO15K\n"
           ],
           [
             909.8427647716239,
@@ -1550,7 +1550,7 @@
             1511.5378584682621,
             1766.362511445209,
             7,
-            "100 \u5effSubISO \u516cGraphTA 100 \u4ee4NSnop e-NSMatch\n\u738b $\\underline{{\\hat{\\leq}}}$ 90 \u65e5\u65e5 90 $\\bigvee_{\\mathrm{k}^{-}\\longrightarrow-}$ \u65e5\u4e2d 80 80 2\n70 70\n60 $60$ \n1 10 50 100 150 $\\bigstar\\bigstar|\\bigstar||$ 10 50 100 150 $\\mathbf{\\tau}(\\mathbf{a})$ Richpedia (b) YAGO15K\n"
+            "100 \u5effSubISO \u516cGraphTA 100 \u4ee4NSnop e-NSMatch\n\u738b $\\underline{{\\hat{\\mathbf{s}}}}$ 90 \u65e5\u65e5 90 $\\bigcup_{\\mathbb{N}^{2}\\to\\mathbb{-}}$ \u65e5\u4e2d 80 80 2\n70 70\n60 $60$ \n1 10 50 100 150 $\\bigstar\\bigstar|\\bigstar|<$ 10 50 100 150 $\\mathbf{\\tau}(\\mathbf{a})$ Richpedia (b) YAGO15K\n"
           ],
           [
             174.71022755112142,
@@ -1558,7 +1558,7 @@
             776.7795518307184,
             685.8732515015229,
             8,
-            "100000 \u65e5SubISO \u4e00GraphTA $\\Leftrightarrow_{\\infty,\\infty,\\leq}\\operatorname{Snop}$ eNSMatch\n100000\n\u76f4 10000 ${\\mathcal{V}}_{\\cdot.}^{a}$  $\\mathbf{\\hat{\\alpha}}\\otimes$ \u7f8e $\\frac{7}{\\equiv}$ 10000 $\\left\\{\\begin{array}{c}{{\\displaystyle\\star}}\\\\ {{\\displaystyle\\star_{+}\\mathcal{P}^{\\mathcal{P}^{\\mathcal{P}^{\\mathcal{P}}}}}\\\\ {{\\displaystyle\\star_{+}\\mathcal{P}^{\\mathcal{P}^{\\mathcal{P}}}}}\\end{array}\\right.$ \n1000 \u4e0a 1000\n100 100\n10 10M 50M 100M 200M 300M 40DM 500M 100M 500M 1000M 1500M 2000M 250OM 300OM 10\na) Number of nodes $(\\mathbf{b})$ Number of edges"
+            "100000 \u65e5SubISO \u4e00GraphTA $\\Leftrightarrow_{\\infty,\\infty,\\leq}\\operatorname{Snop}$ eNSMatch\n100000\n\u76f4 10000 ${\\mathcal{V}}_{\\cdot.}^{B}$  $\\mathbf{\\hat{e}}$ \u7f8e $\\frac{7}{\\equiv}$ 10000 $\\left\\{\\begin{array}{c}{{\\displaystyle\\displaystyle{\\left\\{\\begin{array}{c}{{}}\\\\ {{\\displaystyle{\\sum_{+}\\mathcal{J}^{\\mathcal{J}}^{\\mathcal{J}}}}\\end{array}\\right.}}\\end{array}\\right.}$ \n1000 \u4e0a 1000\n100 100\n10 10M 50M 100M 200M 300M 40DM 500M 100M 500M 1000M 1500M 2000M 250OM 300OM 10\na) Number of nodes $(\\mathbf{b})$ Number of edges"
           ],
           [
             177.893864695928,
@@ -1566,7 +1566,7 @@
             780.6635460563616,
             1152.476978287787,
             8,
-            "100 \u4e16SubISO A-GraphTA 100 \u5ff5NSnop GNSMatch\n $\\scriptstyle{\\hat{\\overline{{\\varepsilon}}}}$ 90 $\\begin{array}{c}{{\\longrightarrow}}\\\\ {{\\mathbb{B}^{\\prime}{\\sim}{\\sim}{\\sim}{\\sim}{\\stackrel{\\underbrace{\\underset{\\mathrm{F}}{}}{\\longleftrightarrow}}-{\\frac{\\sqrt{-{}-{}-{}-{}-{}-{}-{}}{\\sqrt{-{}}}}}}}}\\\\ {{\\quad}}\\\\ {{\\mathrm{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}}}\\end{array}$  $\\begin{array}{c}{{\\frac{\\Theta}{\\Theta}}}\\\\ {{\\underline{{\\bigotimes}}}}\\end{array}$ 90 $\\left|\\!\\!\\right|_{\\stackrel{\\scriptstyle1---}{\\scriptstyle-\\,-\\,-\\,-\\,v\\,=\\,-\\,=\\,-\\,=\\,-\\,=\\,}{\\mathop=\\,}}_{-}}$ 80 \u9091 80\n\u590f\u53e3 70 \u5723 70\n $\\scriptstyle00\\;_{10,{\\mathrm{~U}}}$ 50M 100M 200M 300M 400M 500M 60 100M 500M 1000M 1500M 2000M 2500M 3000M (a) Number of nodes (b) Number of edges"
+            "100 \u4e16SubISO A-GraphTA 100 \u5ff5NSnop GNSMatch\n $\\scriptstyle{\\hat{\\overline{{\\varepsilon}}}}$ 90 $\\begin{array}{c}{{\\longrightarrow}}\\\\ {{\\mathbb{B}^{-}{\\sim}{\\sim}{\\sim}{\\sim}{\\sqrt{-{\\frac{\\hat{\\scriptstyle{F}}^{-}{\\sqrt{-{\\frac{\\epsilon_{1}}{\\sqrt{-{\\frac{\\epsilon_{1}}}{\\sqrt{\\mathrm{B}}}}}}}}{\\hat{\\mathrm{B}}^{-}{\\frac{\\epsilon_{1}}{\\sqrt{\\left({\\frac{\\epsilon_{1}}{\\sqrt{\\mathrm{B}}}}}\\right)}} .}}}}}\\end{array}$  $\\begin{array}{c}{{\\frac{\\Theta}{\\Theta}}}\\\\ {{\\underline{{\\bigotimes}}}}\\end{array}$ 90 $\\left|\\!\\!\\right|_{\\stackrel{\\scriptstyle1---}{\\scriptstyle-\\,-\\,-\\,-\\,-\\,=\\,-\\,=\\,-\\,=\\,-\\,=\\,}{\\mathop=\\,+\\,-\\,v\\,=\\,v}}^{=}}$ 80 \u9091 80\n\u590f\u53e3 70 \u5723 70\n $\\scriptstyle{00}_{10,{\\overline{{14}}}}$ 50M 100M 200M 300M 400M 500M 60 100M 500M 1000M 1500M 2000M 2500M 3000M (a) Number of nodes (b) Number of edges"
           ]
         ]
       }

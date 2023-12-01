@@ -1,8 +1,9 @@
 import os
 import json
 import copy
+from PIL import Image
 
-from util.util import *
+from .util import *
 
 class SortGrouper():
     def __init__(self, pdf_file, textbox_file, pics_folder, new_bboxes, layout, output_dir, temp_folder):

@@ -10,10 +10,10 @@ from pdfminer.layout import LTTextBoxHorizontal, LTTextLineHorizontal
 from tqdm import tqdm
 # from PIL import ImageDraw
 
-from model.title_detecter import TitleDetecter
-from util.sort_and_group import SortGrouper
-from util.json_solver import JsonSolver
-from util.util import *
+from .model.title_detecter import TitleDetecter
+from .util.sort_and_group import SortGrouper
+from .util.json_solver import JsonSolver
+from .util.util import *
 
 LCNET_PATH = "resources/pretrained_model/picodet_lcnet_x1_0_fgd_layout_infer"
 current_directory = os.getcwd()
@@ -155,8 +155,7 @@ class Pdformer():
         p2t = Pix2Text(analyzer_config=dict(model_name='mfd'), device='gpu')
         for i,page in enumerate(pages):
             img_fp = os.path.join(self.pics_folder, pages[i])
-            # outs = p2t(img_fp, resized_shape=600)
-            outs = ""
+            outs = p2t(img_fp, resized_shape=600)
         #####out的格式：左上角起顺时针 y为到图片上方的距离
         #####铭记：除了text_boxes y都为到图片上方的距离！！！！！！！！！
 

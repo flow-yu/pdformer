@@ -2,7 +2,7 @@ import os
 import json
 import copy
 
-from util.util import *
+from .util import *
 
 class JsonSolver():
     def __init__(self, output_dir, temp_dir):
