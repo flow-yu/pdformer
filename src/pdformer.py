@@ -1,6 +1,5 @@
 import os
 from PIL import Image
-# import pytesseract
 import subprocess
 import json
 import copy
@@ -9,16 +8,14 @@ from pdf2image import convert_from_path
 from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextBoxHorizontal, LTTextLineHorizontal
 from tqdm import tqdm
-from PIL import ImageDraw
-# from rich.progress import track
+# from PIL import ImageDraw
+
+from model.title_detecter import TitleDetecter
+from util.sort_and_group import SortGrouper
+from util.json_solver import JsonSolver
+from util.util import *
 
 LCNET_PATH = "resources/pretrained_model/picodet_lcnet_x1_0_fgd_layout_infer"
-
-from src.title_detecter import TitleDetecter
-from src.sort_and_group import SortGrouper
-from src.json_solver import JsonSolver
-from src.utile import *
-
 current_directory = os.getcwd()
 # 要创建的文件夹路径
 output_directory = os.path.join(current_directory, 'output')
@@ -178,14 +175,13 @@ class Pdformer():
     def Pix2Text_ocr(self):
         pages = os.listdir(self.pics_folder)
         p2t = Pix2Text(analyzer_config=dict(model_name='mfd'), device='gpu')
-        for i, box in enumerate(pages): ##某一页
-            img_fp = os.path.join(self.pics_folder, pages[i])
-            image = Image.open(img_fp)
+        all_image = [Image.open(os.path.join(self.pics_folder, pages[i])) for i in range(len(pages))]
+        for i, box in tqdm(enumerate(pages)): ##某一页
             for fsection in self.final_layout2[str(i)]:
                 for ffbox in fsection[1]:
                     left, top, right, bottom = ffbox[:4]
                     ybox = (left, top, right, bottom)
-                    cropped_img = image.crop(ybox)
+                    cropped_img = all_image[ffbox[5]].crop(ybox)
                     try:
                         outs = p2t(cropped_img, resized_shape=600)
                     except Exception as e:
@@ -318,8 +314,8 @@ class Pdformer():
         # self.possible_section()
         # self.sort_boxes2()
         
-        # self.Pix2Text_ocr()
-        self.Layout2Text()
+        self.Pix2Text_ocr()
+        # self.Layout2Text()
         self.supplement_title()
         
         JsonSolver(self.output_dir, self.temp_folder).get_json(self)

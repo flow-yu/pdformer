@@ -18,13 +18,6 @@ def main():
     parser.add_argument('--anspath', default='ans/', help='the answer being asked')
     args = parser.parse_args()
 
-    # 读取参数文件 setup.txt
-    # setup_params = {}
-    # with open('setup.txt', 'r') as f:
-    #     for line in f:
-    #         if line.strip():  # 忽略空行
-    #             key, value = line.strip().split('=')
-    #             setup_params[key.strip()] = value.strip()\
     with open('input/config/conf.json', 'r') as file:
         config = json.load(file)
 
