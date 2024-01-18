@@ -10,8 +10,7 @@ When different kinds of large models are attached great importance to, we want t
 
 This is mainly a PDF document content extractor at present. Our work is based on existing open-source projects, combining techs like OCR and layout analysis. The pipeline is as follows:
 
-![image-20240118124243594](/Users/heartflowyu/Library/Application Support/typora-user-images/image-20240118124243594.png)
-
+![image](https://github.com/heartflow-yu/pdformer/assets/80616172/9325c663-9b0c-4519-9f08-5008d13e2cdf)
 ## Install
 
 python==3.8
