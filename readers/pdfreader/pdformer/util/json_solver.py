@@ -1,33 +1,13 @@
 import os
-from paddleocr import PaddleOCR, draw_ocr
-from PIL import Image, ImageDraw, ImageFont
-import pdfplumber
-# import pytesseract
-import numpy as np
-import time
-import sys
-import argparse
-import subprocess
-import numpy as np
-import pandas as pd
 import json
-import PyPDF2
 import copy
-import pix2text
-from pix2text import Pix2Text, merge_line_texts
-import re
-import tensorflow as tf
-import matplotlib.pyplot as plt
-from transformers import TFBertModel, BertTokenizer
-from sklearn.model_selection import train_test_split
-from pdf2image import convert_from_path
-from pdfminer.high_level import extract_pages
-from pdfminer.layout import LTTextBoxHorizontal, LTTextLineHorizontal, LTFigure, LTImage
-# from rich.progress import track
-from src.utile import *
+
+from .util import *
 
 class JsonSolver():
-    def __init__(self):
+    def __init__(self, output_dir, temp_dir):
+        self.output_dir = output_dir
+        self.temp_dir = temp_dir
         self.alayout2 = None
         self.alayout3 = None
 
@@ -46,15 +26,14 @@ class JsonSolver():
                 self.range_boxes(value, new_dict[key])
 
     def tranform_json(self,main_instance):
-        with open('output/alayout.txt', "r") as file:
-            json_data = file.read()
-        alayout = json.loads(json_data)
+        with open(os.path.join(self.temp_dir, 'alayout.json'), "r") as f:
+            alayout = json.loads(f.read())
         alayout2 = copy.deepcopy(alayout)
         self.range_boxes(alayout, alayout2)
 
         json_data = json.dumps(alayout2, indent=2)
-        with open('output/alayout2.txt', "w") as file:
-            file.write(json_data)
+        with open(os.path.join(self.temp_dir, 'alayout2.json'), "w") as f:
+            f.write(json_data)
         self.alayout2 = alayout2
         main_instance.alayout2 = alayout2
 
@@ -64,7 +43,10 @@ class JsonSolver():
                 new_value = {}
                 for index, item in enumerate(value):
                     position = tuple(item[:4])
-                    content = item[4]
+                    if len(item) < 6:
+                        content = ""
+                    else:
+                        content = item[5]
                     new_item = {"position": position, "content": content}
                     new_value[str(index)] = new_item
                 new_dict[key] = new_value
@@ -72,15 +54,13 @@ class JsonSolver():
                 self.split_string(value, new_dict[key])
 
     def split_json(self, main_instance):
-        with open('output/alayout2.txt', "r") as file:
-            json_data = file.read()
-            self.alayout2 = json.loads(json_data)
+        with open(os.path.join(self.temp_dir, 'alayout2.json'), "r") as f:
+            self.alayout2 = json.loads(f.read())
 
         alayout3 = copy.deepcopy(self.alayout2)
         self.split_string(self.alayout2,alayout3)
-        json_data = json.dumps(alayout3, indent=2)
-        with open('output/alayout3.txt', "w") as file:
-            file.write(json_data)
+        with open(os.path.join(self.temp_dir, 'alayout3.json'), "w") as f:
+            json.dump(alayout3, f, indent=2)
         self.alayout3 = alayout3
         main_instance.alayout3 = alayout3
 

@@ -1,43 +1,27 @@
 import os
-from paddleocr import PaddleOCR, draw_ocr
-from PIL import Image, ImageDraw, ImageFont
-import pdfplumber
-# import pytesseract
+from PIL import Image
 import numpy as np
-import time
-import sys
-import argparse
-import subprocess
-import numpy as np
-import pandas as pd
 import json
-import PyPDF2
 import copy
-import pix2text
-from pix2text import Pix2Text, merge_line_texts
-import re
 import tensorflow as tf
-import matplotlib.pyplot as plt
 from transformers import TFBertModel, BertTokenizer
-from sklearn.model_selection import train_test_split
-from pdf2image import convert_from_path
-from pdfminer.high_level import extract_pages
-from pdfminer.layout import LTTextBoxHorizontal, LTTextLineHorizontal, LTFigure, LTImage
-# from rich.progress import track
-from src.utile import *
+from input.config.conf import *
+from ..util.util import *
 
 class TitleDetecter():
-    def __init__(self, pdf_file, textbox_file, pics_folder, output_dir ):
+    def __init__(self, textbox_file):
         self.PDF_file = pdf_file
+        self.pics_dir = pics_directory
+        self.output_dir = output_directory
+        self.temp_dir = temp_directory
+
         self.textbox_file = textbox_file
-        self.pics_folder = pics_folder
         self.new_text_boxes = None
         self.layout = None
 
 
     def encoder(self, sentences):
         ids = []
-        PRE_TRAINED_MODEL_NAME = 'bert-base-uncased'
         tokenizer = BertTokenizer.from_pretrained(PRE_TRAINED_MODEL_NAME,do_lower_case = True)
         for sentence in sentences:
             # 文本编码+添加编码id
@@ -52,11 +36,11 @@ class TitleDetecter():
             ids.append(encoding['input_ids'])
         return ids
 
-    def bert_title(self, main_instance):
+    def bert_title(self, main_instance, filter_threhold = 0.958):
         with open(self.textbox_file, 'r') as f:
         #不同pdf被pdfminer解析出的box信息存放在对应的textbox
              text_boxes = json.load(f)
-        bert_encoder = TFBertModel.from_pretrained('bert-base-uncased') #可以将输入的文本转换为高维向量表示
+        bert_encoder = TFBertModel.from_pretrained(PRE_TRAINED_MODEL_NAME) #可以将输入的文本转换为高维向量表示
 #模型构建
         input_word_ids = tf.keras.Input(shape=(16,), dtype=tf.int32, name="input_word_ids") #input层
         embedding = bert_encoder([input_word_ids])  #[batch_size, sequence_length, hidden_size]
@@ -67,7 +51,7 @@ class TitleDetecter():
         output = tf.keras.layers.Dense(1, activation='sigmoid')(dense)
         model = tf.keras.Model(inputs=[input_word_ids], outputs=output)
 
-        pages = os.listdir(self.pics_folder)
+        pages = os.listdir(self.pics_dir)
         filtered_list=[]
         new_text_boxes={}
 
@@ -88,7 +72,7 @@ class TitleDetecter():
                 else:
                     new_text_boxes[str(i)].remove(box)
 
-        with open('output/origin_list2.txt', 'w') as f:
+        with open(os.path.join(self.temp_dir, 'origin_list2.txt'), 'w') as f:
             for item in filtered_list:
                 f.write("%s\n" % item)
 
@@ -97,19 +81,19 @@ class TitleDetecter():
         filtered_list = self.encoder(filtered_list)
         filtered_list = tf.convert_to_tensor(filtered_list)
 
-        model.load_weights('pretrained_model/model_4epoch.h5')
+        model.load_weights(BERT_TITLE_MODEL_PATH)
         prediction = model.predict(filtered_list)
 
         merged_array = np.concatenate(( text_list.reshape(-1, 1), prediction), axis=1)
-        with open('output/ans_list.txt', 'w') as f:
+        with open(os.path.join(self.temp_dir, 'ans_list.txt'), 'w') as f:
             for item in merged_array:
                 f.write("%s\n" % item)
 
         ans_array = np.empty((0, 2))
         for i in range(len(merged_array)):
-            if float(merged_array[i][1]) > 0.958:
+            if float(merged_array[i][1]) > filter_threhold:
                 ans_array = np.vstack((ans_array, merged_array[i]))
-        with open('output/ans_title_list.txt', 'w') as f:
+        with open(os.path.join(self.temp_dir, 'ans_title_list.txt'), 'w') as f:
             for item in ans_array:
                 f.write("%s\n" % item)
 
@@ -117,28 +101,26 @@ class TitleDetecter():
         copied_dict2 = copy.deepcopy(new_text_boxes)
         for i,page in enumerate(pages):
             for box in copied_dict2[str(i)]:
-                if float(merged_array[box_index][1]) <= 0.958:
+                if float(merged_array[box_index][1]) <= filter_threhold:
                     new_text_boxes[str(i)].remove(box)
                 box_index = box_index+1
         print(box_index)
 
-        json_data = json.dumps(new_text_boxes, indent=2)
-        # 将JSON数据写入文本文件
-        with open('output/new_text_boxes.txt', "w") as file:
-            file.write(json_data)
         self.new_text_boxes = new_text_boxes
         main_instance.new_text_boxes = new_text_boxes
+        with open(os.path.join(self.temp_dir, 'new_text_boxes.json'), "w") as f:
+            json.dump(new_text_boxes, f, indent=2)
 
     def merge_title(self, main_instance):
         layout={}
         page_height, page_width = get_page_size(self.PDF_file)
 
         num=-1
-        pages = os.listdir(self.pics_folder)
+        pages = os.listdir(self.pics_dir)
         for i,page in enumerate(pages):
             layout.setdefault(str(i), [])
             temp=["", -1,-1,-1,-1]  ##防止不同page的同一位置
-            img_fp = os.path.join(self.pics_folder, pages[i])
+            img_fp = os.path.join(self.pics_dir, pages[i])
             #字典的键为当前页面的索引"i"，值为标题信息列表。
             image = Image.open(img_fp)
             cood_h = image.size[1] / page_height
@@ -157,12 +139,10 @@ class TitleDetecter():
                         layout[str(i)].append(new_box)
                         temp = box
 
-        json_data = json.dumps(layout, indent=2)
-        # 将JSON数据写入文本文件
-        with open('output/layout_title.txt', "w") as file:
-            file.write(json_data)
         self.layout = layout
         main_instance.layout = layout
+        with open(os.path.join(self.temp_dir, 'layout_title.txt'), "w") as f:
+            json.dump(layout, f, indent=2)
 
     def detector(self, main_instance):
         self.bert_title(main_instance)
