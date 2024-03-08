@@ -6,7 +6,7 @@ import argparse
 PROJECT_NAME = "Pdformer"
 sys.path.append(os.path.join(os.getcwd()[:os.getcwd().find(PROJECT_NAME)], PROJECT_NAME))
 from input.config.conf import *
-from datashovel.readers.pdfreader import PdfReader
+from readers.pdfreader import PdfReader
 
 def main():
     # parser = argparse.ArgumentParser()
