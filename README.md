@@ -31,21 +31,21 @@ Find the ***conf.py*** under **"input/config/"**, and freely modify the default 
 
 #### Loading a PDF and run
 
-**input_directory**: the default input directory is under "input/".
+**input_directory**: the default input directory is under **"input/"**.
 
-Put the pdf file under "input/example/", change the value of pdf_name to the name of the pdf (ex: for test.pdf, pdf_name = "test")
+Put the pdf file under **"input/example/"**, change the value of pdf_name to the name of the pdf (ex: for test.pdf, pdf_name = "test")
 
 Run the ***run_pdformer.py*** under **"script/"**
 
 #### Outputs
 
-**output_directory**: the default output directory is under "output/pdf_name/".
+**output_directory**: the default output directory is under **"output/pdf_name/"**.
 
-***result.json*** (structured json) is under "output/pdf_name/results/", which also contains the meta_csv collected from the pdf file, namely **title, text, list, table and figure**. The data form in csv is shown below:
+***result.json*** (structured json) is under **"output/pdf_name/results/"**, which also contains the meta_csv collected from the pdf file, namely **title, text, list, table and figure**. The data form in csv is shown below:
 
 ![image-20240308022610361](./README_pics/image-20240308022610361.png)
 
-**pics_directory**: the default pics directory is under "output/pdf_name/pics/", which contains pictures of the pdf file.
+**pics_directory**: the default pics directory is under **"output/pdf_name/pics/"**, which contains pictures of the pdf file.
 
-**structure_directory**: the default structure directory is under "output/pdf_name/structure/", which contains the result of the layout analysis.
+**structure_directory**: the default structure directory is under **"output/pdf_name/structure/"**, which contains the result of the layout analysis.
 
