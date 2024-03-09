@@ -3,7 +3,7 @@ import json
 import sys
 import argparse
 
-PROJECT_NAME = "Pdformer"
+PROJECT_NAME = "pdformer"
 sys.path.append(os.path.join(os.getcwd()[:os.getcwd().find(PROJECT_NAME)], PROJECT_NAME))
 from input.config.conf import *
 from readers.pdfreader import PdfReader
