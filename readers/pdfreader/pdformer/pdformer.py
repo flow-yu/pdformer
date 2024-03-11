@@ -43,8 +43,8 @@ class Pdformer():
             # setattr(self, f"{folder_type}_solver", globals()[f"{folder_type.capitalize()}Solver"]())
 
         self.solvers = {
-            "text": TextSolver(),
             "title": TitleSolver(),
+            "text": TextSolver(),
             "list": ListSolver(),
             "table": TableSolver(),
             "figure": FigureSolver()
@@ -83,10 +83,12 @@ class Pdformer():
 
     def generate_structured_pics(self):
         print("############################")
-        #TODO
-        if os.path.exists(self.structure_dir):
-            print("Structure already generated")
-            return
+        # #TODO
+        # if os.path.exists(self.structure_dir):
+        #     print("Structure already generated")
+        #     return
+        if not os.path.exists(self.structure_dir):
+            os.makedirs(self.structure_dir)
         command = ["python", INFER_PATH,
                 "--model_dir=" + LCNET_PATH,
                 "--image_dir=" + self.pics_dir,
@@ -152,9 +154,9 @@ class Pdformer():
                     y.append(x_max)
                     y.append(y_max)
 
-                    if (box["category_id"] in category_id2name):
-                        y.append(category_id2name[box["category_id"]])
-                    if (box["category_id"]!=1):
+                    if (box["category_id"] in category_id2name_bbox):
+                        y.append(category_id2name_bbox[box["category_id"]])
+                    if (box["category_id"]!=1): #layout中不加入title
                         bboxes.setdefault(str(i), []).append(y)  #####不可忘记str化！！否则在txt中看不出来！！！！
 
         self.bboxes = bboxes
@@ -187,6 +189,7 @@ class Pdformer():
         self.new_bboxes = new_bboxes
 
     def Pix2Text_ocr(self):
+        #TODO 跳过table list 等
         pages = os.listdir(self.pics_dir)
         p2t = Pix2Text(analyzer_config=dict(model_name='mfd'), device='cpu')
         all_image = [Image.open(os.path.join(self.pics_dir, pages[i])) for i in range(len(pages))]
@@ -239,7 +242,8 @@ class Pdformer():
                         current_id = getattr(self, f"{category}_id")
                         node_list.append(solver.get_newnode(current_id))
                         current_entries = getattr(self, f"{category}_entries")
-                        current_entries.append(solver.get_newentry(current_id, i, box[:4], box[6]))
+                        text = box[6].replace("\n", "\\n") # avoid the '/n' occupying multiple lines in csv
+                        current_entries.append(solver.get_newentry(current_id, i, box[:4], text))
                         setattr(self, f"{category}_id", current_id + 1)
 
         for category in categories:
@@ -251,40 +255,45 @@ class Pdformer():
                 for entry in current_entries:
                     writer.writerow(entry)
         
+        with open(os.path.join(self.temp_dir, 'node_list.json'), "w") as f:
+            json.dump(node_list, f, indent=2)
         return node_list
 
     def clean_title_level(self, all_nodes):
         for node in all_nodes:
-            if node['node_type'] == 1:  # 标题  
+            if node['node_type'] == 0:  # 标题  
                 title_words = node['text'].split(" ")
 
-            first_word = ""   
-            for i in title_words:
-                if i != "":
-                    first_word = i
-                    break    # 4.1   (1)   Abstract
+                first_word = ""   
+                for i in title_words:
+                    if i != "":
+                        first_word = i
+                        break    # 4.1   (1)   Abstract
 
-            nums = first_word.split(".")   
-            is_num = True
-            for i in nums:# 4 1   (
-                if not i.isdigit():   
-                    is_num = False  #abstract  （1）？
+                nums = first_word.split(".")   
+                is_num = True
+                for i in nums:# 4 1   (
+                    if not i.isdigit():   
+                        is_num = False  #abstract  （1）？
 
-            if is_num:
-                #TODO 改级别？
-                # node['level'] = len(nums) + 1  ########数字个数加1为级别 
-                if (len(nums)>0):
+                if is_num:
+                    #TODO 改级别？
+                    # node['level'] = len(nums) + 1  ########数字个数加1为级别 
                     node['level'] = len(nums)   ###########数字个数为级别 1级开始   
+
+        with open(os.path.join(self.temp_dir, 'all_nodes.json'), "w") as f:
+            json.dump(all_nodes, f, indent=2)        
+                   
         return all_nodes
 
     def build_tree(self, root_node, nodes, start_idx, current_level): #递归建树
         idx = start_idx
         while idx < len(nodes):
             node = nodes[idx]
-            if node['node_type'] == 1:  # paragraph
+            if node['node_type'] >0:  # not title
                 root_node['children'].append(node)
                 idx += 1
-            else:
+            else:# title
                 if node['level'] <= current_level:  # 遇高级/同级标题 递归结束 
                     break
                 else:
@@ -294,9 +303,16 @@ class Pdformer():
         return root_node, idx
 
     def organize_tokens(self,nodes):
-        root = nodes[0]
-        root_tree, _ = self.build_tree(root, nodes, 1, 1) #从大标题开始
-        return root_tree
+        end_idx = 0
+        root_titles = []
+
+        #TODO from the root node(root level should be larger than any)
+        while True:
+            root_tree, end_idx = self.build_tree(nodes[end_idx], nodes, end_idx+1, 1) 
+            root_titles.append(root_tree)
+            if end_idx == len(nodes):
+                break
+        return root_titles
 
     def pdf2json(self):
         self.generate_pics()
@@ -321,7 +337,7 @@ class Pdformer():
         self.Pix2Text_ocr()
         all_nodes = self.list2node_csv(self.final_layout2)
         all_nodes = self.clean_title_level(all_nodes)
-        root_tree = self.organize_tokens(all_nodes)
+        root_titles = self.organize_tokens(all_nodes)
         # self.Layout2Text()
 
         # self.supplement_title()  alayout.json
@@ -329,4 +345,4 @@ class Pdformer():
         # JsonSolver(self.output_dir, self.temp_folder).get_json(self)
         # self.tranform_json()
         # self.split_json()
-        return root_tree
+        return root_titles

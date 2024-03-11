@@ -10,6 +10,6 @@ class PdfReader():
         '''
           read the document and save it into folder
         '''
-        root_tree = Pdformer().pdf2json()
+        root_titles = Pdformer().pdf2json()
         with open(self.result_file, "w") as f:
-            json.dump(root_tree, f, indent=2)
+            json.dump(root_titles, f, indent=2)
